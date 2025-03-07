@@ -820,7 +820,7 @@ function updateCpuUsage(stats) {
 // Update Disk Usage
 function updateDiskUsage(stats) {
     const diskUsageRaw = parseFloat(stats.volumeSize); // in MB
-    const diskLimitRaw = <%= instance.Disk %> * 1024 || 10 * 1024; 
+    const diskLimitRaw = <%= instance.Disk %> * 1024; 
     const diskUsagePercent = (diskUsageRaw / diskLimitRaw * 100).toFixed(2);
 
     // Update disk usage text content
