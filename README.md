@@ -24,7 +24,6 @@ HydraPanel runs on various operating systems, so pick whichever you are most com
 
 * Node.js `v20` and higher (Nodejs `v20` recommended).
 
-# Installation at [Website](https://hydra.hydrenllc.us.kg)
-# Credits
-- Skyport (EOL)
-- SRYDEN (https://sryden.com)
+# Note- This is the offical panel of HydrenINC. 
+
+You can check the License file
