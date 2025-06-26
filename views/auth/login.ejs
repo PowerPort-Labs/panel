@@ -1,48 +1,49 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title><%= name %> - Login</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://api.fontshare.com/v2/css?f[]=general-sans@500,300,600,400,700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  </style>
 </head>
+<body class="h-screen w-screen flex items-center justify-center font-sans text-white">
 
-<body class="bg-[#0b0d0f] text-gray-300 min-h-screen flex flex-col">
-   <main class="flex-grow flex items-center justify-center p-8">
-       <div class="py-8 px-6 md:py-12 md:px-8 max-w-md w-full">
-        <div class="flex justify-center mt-4">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16 text-white">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
-            </svg>
-        </div>
+  <div class="bg-gray-400/10 backdrop-blur-sm border border-gray-400/30 rounded-2xl shadow-xl p-8 w-full max-w-md">
+    <div class="flex justify-center mb-6">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+        stroke-width="1.5" stroke="currentColor" class="w-14 h-14 text-white">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 
+          2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 
+          2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+      </svg>
+    </div>
 
-        <h2 class="text-center text-3xl md:text-4xl font-extrabold text-white tracking-tight">Welcome back!</h2>
-        <p class="text-center text-gray-400 mt-2 text-sm md:text-base">Sign in to your account to continue</p>
-           
-           <!-- User/Password Login Form -->
-           <form method="GET" action="/auth/login" class="mt-8 space-y-4">
-               <div>
-                   <input type="username" 
-                   id="username" 
-                   name="username" 
-                   class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white rounded-lg placeholder-gray-400" 
-                   placeholder="Username" 
-                   required>
-                </div>
-               <div>
-                <input type="password" 
-                id="password" 
-                name="password" 
-                class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white rounded-lg placeholder-gray-400" 
-                placeholder="Password" 
-                required>               </div>
-                <button type="submit" class="w-full flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-5 rounded-lg transition duration-300">                     
-                    <span>Sign in</span>
-                </button>
-                
-           </form>
-       </div>
-   </main>
+    <h2 class="text-center text-3xl font-bold mb-2">Welcome Back</h2>
+    <p class="text-center text-sm text-gray-300 mb-6">Login to continue</p>
+
+    <form action="/auth/login" method="GET" class="space-y-4">
+      <input type="text" name="username" placeholder="Username" required
+        class="w-full p-3 bg-gray-400/10 backdrop-blur-sm border border-gray-400/30 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-white/20" />
+
+      <input type="password" name="password" placeholder="Password" required
+        class="w-full p-3 bg-gray-400/10 backdrop-blur-sm border border-gray-400/30 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-white/20" />
+
+      <button type="submit"
+        class="w-full py-3 rounded-lg bg-gradient-to-r from-green-600 to-lime-500 hover:from-green-700 hover:to-lime-600 text-white font-semibold transition duration-300">
+        Sign In
+      </button>
+    </form>
+  </div>
+
+</body>
+</html>
