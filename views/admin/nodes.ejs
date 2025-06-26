@@ -9,7 +9,7 @@
        <% if (req.query.err=="none" ) { %>
         <div class="my-4 rounded-full shadow-sm border border-white/10 px-3 py-2 pt-2.5">
           <span class="text-white text-xs mt-0.5">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 mb-0.5 text-indigo-300 rounded-full shadow-sm bg-indigo-500/15 p-1.5 mr-2.5 inline-flex">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 mb-0.5 text-green-300 rounded-full shadow-sm bg-green-500/15 p-1.5 mr-2.5 inline-flex">
             <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
           </svg>
           Action completed - Node Have Been Created Successfully. 
@@ -19,7 +19,7 @@
     <% if (req.query.err == "EDITED") { %>
       <div class="my-4 rounded-full shadow-sm border border-white/10 px-3 py-2 pt-2.5">
         <span class="text-white text-xs mt-0.5">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 mb-0.5 text-indigo-300 rounded-full shadow-sm bg-indigo-500/15 p-1.5 mr-2.5 inline-flex">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 mb-0.5 text-green-300 rounded-full shadow-sm bg-green-500/15 p-1.5 mr-2.5 inline-flex">
           <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
         </svg>
         Action completed - Node Have Been Edited Successfully. 
@@ -38,7 +38,7 @@
           <% if (req.user.admin === true) { %>
            <!-- Actions -->
            <div class="flex items-center gap-3">
-        <button id="createButton" type="button" class="hover:scale-95 flex items-center justify-center h-11 gap-2 px-5 text-sm font-medium text-white transition-all duration-200 rounded-full shadow bg-indigo-500 hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-800 focus:ring-offset-2 ring-offset-gray-200 hover:shadow-none">
+        <button id="createButton" type="button" class="hover:scale-95 flex items-center justify-center h-11 gap-2 px-5 text-sm font-medium text-white transition-all duration-200 rounded-full shadow bg-green-500 hover:bg-green-700 focus:ring-2 focus:ring-green-800 focus:ring-offset-2 ring-offset-gray-200 hover:shadow-none">
         <span>Create</span>
         
         </button>
@@ -171,42 +171,42 @@
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label for="nodeName" class="text-white text-sm tracking-tight mb-2"><%= req.translations.name %>:</label>
-                        <input id="nodeName" class="rflex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white rounded-lg placeholder-gray-400" placeholder="My node">
+                        <input id="nodeName" class="rflex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-green-500 focus:border-green-500 text-white rounded-lg placeholder-gray-400" placeholder="My node">
                     </div>
     
                     <div>
                         <label for="nodeRam" class="text-white text-sm tracking-tight mb-2"><%= req.translations.ram %> (GB):</label>
-                        <input id="nodeRam" class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white rounded-lg placeholder-gray-400" placeholder="10240">
+                        <input id="nodeRam" class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-green-500 focus:border-green-500 text-white rounded-lg placeholder-gray-400" placeholder="10240">
                     </div>
     
                     <div>
                         <label for="nodeDisk" class="text-white text-sm tracking-tight mb-2"><%= req.translations.disk %> (GB):</label>
-                        <input id="nodeDisk" class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white rounded-lg placeholder-gray-400" placeholder="320">
+                        <input id="nodeDisk" class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-green-500 focus:border-green-500 text-white rounded-lg placeholder-gray-400" placeholder="320">
                     </div>
     
                     <div>
                         <label for="nodeProcessor" class="text-white text-sm tracking-tight mb-2"><%= req.translations.cpu %>:</label>
-                        <input id="nodeProcessor" class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white rounded-lg placeholder-gray-400" placeholder="Ryzen 9">
+                        <input id="nodeProcessor" class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-green-500 focus:border-green-500 text-white rounded-lg placeholder-gray-400" placeholder="Ryzen 9">
                     </div>
     
                     <div>
                         <label for="nodeAddress" class="text-white text-sm tracking-tight mb-2"><%= req.translations.addressIP %>:</label>
-                        <input id="nodeAddress" class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white rounded-lg placeholder-gray-400" placeholder="192.168.1.1 or my.hostnamehere.com">
+                        <input id="nodeAddress" class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-green-500 focus:border-green-500 text-white rounded-lg placeholder-gray-400" placeholder="192.168.1.1 or my.hostnamehere.com">
                     </div>
     
                     <div>
                         <label for="nodePort" class="text-white text-sm tracking-tight mb-2"><%= req.translations.deamonPort %>:</label>
-                        <input id="nodePort" class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white rounded-lg placeholder-gray-400" placeholder="3002">
+                        <input id="nodePort" class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-green-500 focus:border-green-500 text-white rounded-lg placeholder-gray-400" placeholder="3002">
                     </div>
     
                     <div class="col-span-2">
                         <label for="tagInput" class="text-white text-sm tracking-tight mb-2"><%= req.translations.tags %>:</label>
                         <div id="tagContainer" class="flex flex-wrap gap-2 mb-2"></div>
-                        <input id="tagInput" class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white rounded-lg placeholder-gray-400" placeholder="Add a tag and press Enter">
+                        <input id="tagInput" class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-green-500 focus:border-green-500 text-white rounded-lg placeholder-gray-400" placeholder="Add a tag and press Enter">
                     </div>
     
                     <div class="col-span-2">
-                        <button id="createNodeBtn" type="button" class="w-32 flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-3 rounded-lg transition duration-300">
+                        <button id="createNodeBtn" type="button" class="w-32 flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-3 rounded-lg transition duration-300">
                             <%= req.translations.create %>
                         </button>
                     </div>
@@ -334,7 +334,7 @@ async function deletenode(nodeId) {
 
 <div class="flex justify-center">
     <button id="doneBtn" 
-        class="rounded-xl bg-white text-black px-4 py-2 text-sm md:text-base font-medium shadow-lg transition hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mt-4">
+        class="rounded-xl bg-white text-black px-4 py-2 text-sm md:text-base font-medium shadow-lg transition hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 mt-4">
         Done
     </button>
 </div>
@@ -392,7 +392,7 @@ function showPopup2(command) {
 
 <div class="flex justify-center">
     <button id="doneBtn" 
-        class="rounded-xl bg-white text-black px-4 py-2 text-sm md:text-base font-medium shadow-lg transition hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mt-4">
+        class="rounded-xl bg-white text-black px-4 py-2 text-sm md:text-base font-medium shadow-lg transition hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 mt-4">
         Done
     </button>
 </div>

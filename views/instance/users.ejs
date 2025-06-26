@@ -62,7 +62,7 @@
                           </svg>                          
                     </div>
                     <h3 class="text-lg font-medium text-white mb-2">No Users Found</h3>
-                    <p class="text-indigo-200/60">Give Access to your friends to manage your server</p>
+                    <p class="text-green-200/60">Give Access to your friends to manage your server</p>
                 </div>
             <% } else { %>
             <% users.forEach(function(user) { %>
@@ -88,11 +88,11 @@
         <form id="add-subuser-form">
             <div class="mb-4">
                 <label for="username" class="block text-sm font-medium text-gray-300 mb-1">Username</label>
-                <input type="username" id="username" name="username" required class="w-full px-3 py-2 bg-white/5 border border-white/5 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <input type="username" id="username" name="username" required class="w-full px-3 py-2 bg-white/5 border border-white/5 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-green-500">
             </div>
             <div class="flex justify-end">
                 <button type="button" id="cancel-add" class="bg-neutral-600 hover:bg-neutral-700 text-white font-medium py-2 px-4 rounded-xl transition mr-2">Cancel</button>
-                <button type="submit" class="bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-xl transition">Add Subuser</button>
+                <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-xl transition">Add Subuser</button>
             </div>
         </form>
     </div>

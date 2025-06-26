@@ -51,7 +51,7 @@
            <!-- Current Credentials -->
            <div class="mb-8">
                <div class="mb-4">
-                   <input value="<%= user.email %>" class="transition ease-in-out delay-100 shadow-sm block w-full sm:text-sm rounded-lg bg-white/5 text-white border-white/5 focus:ring-indigo-500 focus:border-indigo-500" disabled>
+                   <input value="<%= user.email %>" class="transition ease-in-out delay-100 shadow-sm block w-full sm:text-sm rounded-lg bg-white/5 text-white border-white/5 focus:ring-green-500 focus:border-green-500" disabled>
                </div>       
             </div>
            <!-- Password Change Section -->
@@ -59,10 +59,10 @@
                <h3 class="text-lg font-semibold mb-4">Set a new password</h3>
                <form id="change-password-form" action="/change-password" method="POST" class="space-y-4">
                    <div>
-                       <input type="password" id="currentPassword" placeholder="Current Password" class="transition ease-in-out delay-100 shadow-sm block w-full sm:text-sm rounded-lg bg-white/5 placeholder-white/60 text-white border-white/5 focus:ring-indigo-500 focus:border-indigo-500">
+                       <input type="password" id="currentPassword" placeholder="Current Password" class="transition ease-in-out delay-100 shadow-sm block w-full sm:text-sm rounded-lg bg-white/5 placeholder-white/60 text-white border-white/5 focus:ring-green-500 focus:border-green-500">
                    </div>
                    <div>
-                       <input type="password" id="newPassword" placeholder="New Password" class="transition ease-in-out delay-100 shadow-sm block w-full sm:text-sm rounded-lg placeholder-white/60 bg-white/5 text-white border-white/5 focus:ring-indigo-500 focus:border-indigo-500">
+                       <input type="password" id="newPassword" placeholder="New Password" class="transition ease-in-out delay-100 shadow-sm block w-full sm:text-sm rounded-lg placeholder-white/60 bg-white/5 text-white border-white/5 focus:ring-green-500 focus:border-green-500">
                    </div>
                    <p class="text-sm text-white/70 text-left py-2.5">
                        Password must contain:
@@ -73,7 +73,7 @@
                    </p>
                    <div class="flex justify-between gap-4 mt-6">
                      
-                       <button type="submit" class="flex-1 font-medium bg-indigo-500 text-white px-4 py-2 rounded-xl text-sm hover:scale-95 hover:bg-indigo-600 transition">
+                       <button type="submit" class="flex-1 font-medium bg-green-500 text-white px-4 py-2 rounded-xl text-sm hover:scale-95 hover:bg-green-600 transition">
                         <%= req.translations.update_password %>
                        </button>
                    </div>

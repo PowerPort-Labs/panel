@@ -147,17 +147,17 @@ const eulaPopupHTML = `
     
                 <span><%= instance.Node.address %>:<%= instance.Primary %></span>
             </div>
-            <button id="startButton" onclick="powerAction('start')" class="heavy h-12 w-12 hover:scale-95 bg-indigo-500/15 hover:bg-indigo-500/25 text-indigo-300 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed" title="Start Server">
+            <button id="startButton" onclick="powerAction('start')" class="heavy h-12 w-12 hover:scale-95 bg-green-500/15 hover:bg-green-500/25 text-green-300 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed" title="Start Server">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mx-auto">
                     <path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd" />
                 </svg>
             </button>
-            <button id="restartButton" onclick="powerAction('restart')" class="heavy h-12 w-12 hover:scale-95 bg-indigo-500/15 hover:bg-indigo-500/25 text-indigo-300 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed" title="Restart Server">
+            <button id="restartButton" onclick="powerAction('restart')" class="heavy h-12 w-12 hover:scale-95 bg-green-500/15 hover:bg-green-500/25 text-green-300 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed" title="Restart Server">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mx-auto">
                     <path fill-rule="evenodd" d="M4.755 10.059a7.5 7.5 0 0 1 12.548-3.364l1.903 1.903h-3.183a.75.75 0 1 0 0 1.5h4.992a.75.75 0 0 0 .75-.75V4.356a.75.75 0 0 0-1.5 0v3.18l-1.9-1.9A9 9 0 0 0 3.306 9.67a.75.75 0 1 0 1.45.388Zm15.408 3.352a.75.75 0 0 0-.919.53 7.5 7.5 0 0 1-12.548 3.364l-1.902-1.903h3.183a.75.75 0 0 0 0-1.5H2.984a.75.75 0 0 0-.75.75v4.992a.75.75 0 0 0 1.5 0v-3.18l1.9 1.9a9 9 0 0 0 15.059-4.035.75.75 0 0 0-.53-.918Z" clip-rule="evenodd" />
                 </svg>
             </button>
-            <button id="stopButton" onclick="powerAction('stop')" class="heavy h-12 w-12 hover:scale-95 bg-indigo-500/15 hover:bg-indigo-500/25 text-indigo-300 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed" title="Stop Server">
+            <button id="stopButton" onclick="powerAction('stop')" class="heavy h-12 w-12 hover:scale-95 bg-green-500/15 hover:bg-green-500/25 text-green-300 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed" title="Stop Server">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mx-auto">
                     <path fill-rule="evenodd" d="M4.5 7.5a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-9a3 3 0 0 1-3-3v-9Z" clip-rule="evenodd" />
                 </svg>
@@ -183,13 +183,13 @@ const eulaPopupHTML = `
                     <!-- Input Field -->
                     <input type="text" 
                            id="console-input" 
-                           class="flex-grow p-3 bg-white/10 border border-white/10 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white rounded-lg placeholder-gray-400" 
+                           class="flex-grow p-3 bg-white/10 border border-white/10 focus:ring-2 focus:ring-green-500 focus:border-green-500 text-white rounded-lg placeholder-gray-400" 
                            placeholder="Enter a command" 
                            required>
                 
                     <!-- Send Command Button -->
                     <button onclick="sendCommand()" 
-                            class="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-5 rounded-lg transition duration-300">
+                            class="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-5 rounded-lg transition duration-300">
                         <span>Send Command</span>
                         <svg xmlns="http://www.w3.org/2000/svg" 
                              fill="none" 
@@ -209,7 +209,7 @@ const eulaPopupHTML = `
             <div id="cpuUsageContainer" class="bg-white/5 rounded-lg p-6">
                 <h3 class="text-sm font-semibold mb-2 text-white/60"><%= req.translations.cpuUsage %></h3>
                 <div class="w-full bg-gray-700 rounded-full h-2.5">
-                    <div id="cpuProgressBar" class="bg-indigo-500 h-2.5 rounded-full" style="width: 0%;"></div>
+                    <div id="cpuProgressBar" class="bg-green-500 h-2.5 rounded-full" style="width: 0%;"></div>
                 </div>
                 <span id="cpuUsage" class="text-sm font-medium mt-2 block text-center"></span>
             </div>
@@ -218,7 +218,7 @@ const eulaPopupHTML = `
             <div id="diskUsageContainer" class="bg-white/5 rounded-lg p-6">
                 <h3 class="text-sm font-semibold mb-2 text-white/60"><%= req.translations.diskUsage %></h3>
                 <div class="w-full bg-gray-700 rounded-full h-2.5">
-                    <div id="diskProgressBar" class="bg-indigo-500 h-2.5 rounded-full" style="width: 0%;"></div>
+                    <div id="diskProgressBar" class="bg-green-500 h-2.5 rounded-full" style="width: 0%;"></div>
                 </div>
                 <span id="diskUsage" class="text-sm font-medium mt-2 block text-center"></span>
             </div>
@@ -227,7 +227,7 @@ const eulaPopupHTML = `
             <div id="ramUsageContainer" class="bg-white/5 rounded-lg p-6">
                 <h3 class="text-sm font-semibold mb-2 text-white/60"><%= req.translations.ramUsage %></h3>
                 <div class="w-full bg-gray-700 rounded-full h-2.5">
-                    <div id="ramProgressBar" class="bg-indigo-500 h-2.5 rounded-full" style="width: 0%;"></div>
+                    <div id="ramProgressBar" class="bg-green-500 h-2.5 rounded-full" style="width: 0%;"></div>
                 </div>
                 <span id="ramUsage" class="text-sm font-medium mt-2 block text-center"></span>
             </div>
@@ -241,17 +241,17 @@ const eulaPopupHTML = `
                         <div class="bg-white/5 card rounded-xl p-6">
                             <div>
                                 <div class="flex space-x-2 mb-4">
-                                    <button id="startButton" class="heavy h-12 w-12 hover:scale-95 bg-indigo-500/15 hover:bg-indigo-500/25 text-indigo-300 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed" title="Start Server">
+                                    <button id="startButton" class="heavy h-12 w-12 hover:scale-95 bg-green-500/15 hover:bg-green-500/25 text-green-300 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed" title="Start Server">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mx-auto">
                                             <path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd" />
                                         </svg>
                                     </button>
-                                    <button id="restartButton" class="heavy h-12 w-12 hover:scale-95 bg-indigo-500/15 hover:bg-indigo-500/25 text-indigo-300 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed" title="Restart Server">
+                                    <button id="restartButton" class="heavy h-12 w-12 hover:scale-95 bg-green-500/15 hover:bg-green-500/25 text-green-300 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed" title="Restart Server">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mx-auto">
                                             <path fill-rule="evenodd" d="M4.755 10.059a7.5 7.5 0 0 1 12.548-3.364l1.903 1.903h-3.183a.75.75 0 1 0 0 1.5h4.992a.75.75 0 0 0 .75-.75V4.356a.75.75 0 0 0-1.5 0v3.18l-1.9-1.9A9 9 0 0 0 3.306 9.67a.75.75 0 1 0 1.45.388Zm15.408 3.352a.75.75 0 0 0-.919.53 7.5 7.5 0 0 1-12.548 3.364l-1.902-1.903h3.183a.75.75 0 0 0 0-1.5H2.984a.75.75 0 0 0-.75.75v4.992a.75.75 0 0 0 1.5 0v-3.18l1.9 1.9a9 9 0 0 0 15.059-4.035.75.75 0 0 0-.53-.918Z" clip-rule="evenodd" />
                                         </svg>
                                     </button>
-                                    <button id="stopButton" class="heavy h-12 w-12 hover:scale-95 bg-indigo-500/15 hover:bg-indigo-500/25 text-indigo-300 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed" title="Stop Server">
+                                    <button id="stopButton" class="heavy h-12 w-12 hover:scale-95 bg-green-500/15 hover:bg-green-500/25 text-green-300 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed" title="Stop Server">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mx-auto">
                                             <path fill-rule="evenodd" d="M4.5 7.5a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-9a3 3 0 0 1-3-3v-9Z" clip-rule="evenodd" />
                                         </svg>
@@ -294,7 +294,7 @@ const eulaPopupHTML = `
                             <br>
                             <% if (instance.Image == "ghcr.io/ma4z-sys/yolks:minecraft_java_21") { %>
                                 <div class="card bg-white/5 rounded-xl p-6">
-                                    <input type="text" id="playername" class="w-full p-2 mb-4 bg-white/5 border border-white/5 focus:ring-2 focus:ring-indigo-500 focus:border-white/5 text-white rounded-lg" placeholder="Player Name" required>
+                                    <input type="text" id="playername" class="w-full p-2 mb-4 bg-white/5 border border-white/5 focus:ring-2 focus:ring-green-500 focus:border-white/5 text-white rounded-lg" placeholder="Player Name" required>
                                 
                                     <div class="flex flex-col space-y-2">
                                         <button onclick="playeraction('ban')" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1.5 rounded-lg text-sm transition hover:scale-95">
@@ -344,7 +344,7 @@ const eulaPopupHTML = `
                                 </div>
                             <% } else if (instance.Image == "ghcr.io/ma4z-sys/yolks:java") { %>
                                 <div class="card bg-white/5 rounded-xl p-6">
-                                    <input type="text" id="playername" class="w-full p-2 mb-4 bg-white/5 border border-white/5 focus:ring-2 focus:ring-indigo-500 focus:border-white/5 text-white rounded-lg" placeholder="Player Name" required>
+                                    <input type="text" id="playername" class="w-full p-2 mb-4 bg-white/5 border border-white/5 focus:ring-2 focus:ring-green-500 focus:border-white/5 text-white rounded-lg" placeholder="Player Name" required>
                                 
                                     <div class="flex flex-col space-y-2">
                                         <button onclick="playeraction('ban')" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1.5 rounded-lg text-sm transition hover:scale-95">

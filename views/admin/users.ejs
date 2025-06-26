@@ -10,7 +10,7 @@
          <% if (req.query.err=="none" ) { %>
           <div class="my-4 rounded-full shadow-sm border border-white/10 px-3 py-2 pt-2.5">
             <span class="text-white text-xs mt-0.5">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 mb-0.5 text-indigo-300 rounded-full shadow-sm bg-indigo-500/15 p-1.5 mr-2.5 inline-flex">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 mb-0.5 text-green-300 rounded-full shadow-sm bg-green-500/15 p-1.5 mr-2.5 inline-flex">
               <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
             </svg>
             Action completed - User Have Been Created Successfully. 
@@ -20,7 +20,7 @@
       <% if (req.query.err == "EDITED") { %>
         <div class="my-4 rounded-full shadow-sm border border-white/10 px-3 py-2 pt-2.5">
           <span class="text-white text-xs mt-0.5">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 mb-0.5 text-indigo-300 rounded-full shadow-sm bg-indigo-500/15 p-1.5 mr-2.5 inline-flex">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 mb-0.5 text-green-300 rounded-full shadow-sm bg-green-500/15 p-1.5 mr-2.5 inline-flex">
             <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
           </svg>
           Action completed - User Have Been Edited Successfully. 
@@ -36,7 +36,7 @@
                 <div class="flex items-center gap-3">
                 </div>
                 <% if (req.user.admin === true) { %>
-                  <button id="createButton" type="button" class="hover:scale-95 flex items-center justify-center h-11 gap-2 px-5 text-sm font-medium text-white transition-all duration-200 rounded-full shadow bg-indigo-500 hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-800 focus:ring-offset-2 ring-offset-gray-200 hover:shadow-none">
+                  <button id="createButton" type="button" class="hover:scale-95 flex items-center justify-center h-11 gap-2 px-5 text-sm font-medium text-white transition-all duration-200 rounded-full shadow bg-green-500 hover:bg-green-700 focus:ring-2 focus:ring-green-800 focus:ring-offset-2 ring-offset-gray-200 hover:shadow-none">
                     <span>Create User</span>
                   </button>
                 <% } %>

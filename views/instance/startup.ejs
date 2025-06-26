@@ -36,8 +36,8 @@
     </div>
     <div class="p-6">
         <div class="flex space-x-4">
-            <input type="text" id="nameServer" class="flex-1 p-3 bg-black/20 text-white border border-transparent rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500 transition" placeholder="<%= instance.Name %>">
-            <button id="saveName" class="bg-indigo-500 text-sm hover:bg-indigo-600 text-white font-medium px-6 rounded-xl flex items-center space-x-2 transition duration-200 hover:scale-95">
+            <input type="text" id="nameServer" class="flex-1 p-3 bg-black/20 text-white border border-transparent rounded-xl focus:border-green-500 focus:ring-2 focus:ring-green-500 transition" placeholder="<%= instance.Name %>">
+            <button id="saveName" class="bg-green-500 text-sm hover:bg-green-600 text-white font-medium px-6 rounded-xl flex items-center space-x-2 transition duration-200 hover:scale-95">
                 <span>Rename</span>
             </button>
         </div>
@@ -117,7 +117,7 @@
                     <div>
                         <h3 class="text-lg font-semibold"><%= variableName %></h3>
                     </div>
-                    <button class="edit-variable bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-1.5 px-4 rounded-full transition" data-variable-name="<%= variableName %>" data-variable-value="<%= envObject[variableName] || '' %>">
+                    <button class="edit-variable bg-green-500 hover:bg-green-700 text-white font-medium py-1.5 px-4 rounded-full transition" data-variable-name="<%= variableName %>" data-variable-value="<%= envObject[variableName] || '' %>">
                         Edit
                     </button>
                 </div>
@@ -139,10 +139,10 @@
 <div id="edit-variable-modal" class="modal-overlay z-50 flex items-center justify-center min-h-screen">
     <div class="bg-[#1b1d21] rounded-2xl modal-content w-full max-w-md p-6">
         <h3 class="text-xl font-semibold mb-4 text-center" id="modal-title">Edit Variable</h3>
-        <input type="text" id="variable-value" class="w-64 p-2 mb-4 bg-white/5 border-none outline-none ring-none transition focus:ring-2 focus:ring-indigo-500 text-white rounded mx-auto block" placeholder="Variable Value">
+        <input type="text" id="variable-value" class="w-64 p-2 mb-4 bg-white/5 border-none outline-none ring-none transition focus:ring-2 focus:ring-green-500 text-white rounded mx-auto block" placeholder="Variable Value">
         <div class="flex justify-center gap-4 p-4">
             <button onclick="closeModal('edit-variable-modal')" class="bg-neutral-600 hover:bg-neutral-700 text-white font-medium py-2 px-4 rounded-full hover:scale-95 transition">Cancel</button>
-            <button id="save-variable" class="bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-full hover:scale-95 transition">Save Changes</button>
+            <button id="save-variable" class="bg-green-500 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-full hover:scale-95 transition">Save Changes</button>
         </div>
     </div>
 </div>
@@ -153,7 +153,7 @@
     <p class="text-gray-300 mb-4" id="modal-message"></p>
     <div class="flex justify-end space-x-4">
         <button id="modal-cancel" class="bg-zinc-600 hover:bg-zinc-700 text-white font-medium py-2 px-4 rounded-lg transition">Cancel</button>
-        <button id="modal-confirm" class="bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg transition">Confirm</button>
+        <button id="modal-confirm" class="bg-green-500 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition">Confirm</button>
     </div>
 </div>
 </div>

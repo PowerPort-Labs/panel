@@ -120,40 +120,40 @@
       <div id="menu-items" class="hidden md:block">
         <div class="rounded-full bg-white/5 backdrop-blur-xl p-1.5 inline-flex items-center">
           <!-- Existing Links -->
-          <a href="/instance/<%= req.params.id %>" class="srv-link group rounded-full px-4 py-1.5 text-sm text-gray-300 hover:text-indigo-300 transition-all duration-200 hover:scale-95">
+          <a href="/instance/<%= req.params.id %>" class="srv-link group rounded-full px-4 py-1.5 text-sm text-gray-300 hover:text-green-300 transition-all duration-200 hover:scale-95">
             Console
           </a>
-          <a href="/instance/<%= req.params.id %>/files" class="srv-link group rounded-full px-4 py-1.5 text-sm text-gray-300 hover:text-indigo-300 transition-all duration-200 hover:scale-95">
+          <a href="/instance/<%= req.params.id %>/files" class="srv-link group rounded-full px-4 py-1.5 text-sm text-gray-300 hover:text-green-300 transition-all duration-200 hover:scale-95">
             Files
           </a>
-          <a href="/instance/<%= req.params.id %>/users" class="srv-link group rounded-full px-4 py-1.5 text-sm text-gray-300 hover:text-indigo-300 transition-all duration-200 hover:scale-95">
+          <a href="/instance/<%= req.params.id %>/users" class="srv-link group rounded-full px-4 py-1.5 text-sm text-gray-300 hover:text-green-300 transition-all duration-200 hover:scale-95">
             Sub Users
           </a>
-          <a href="/instance/<%= req.params.id %>/ftp" class="srv-link group rounded-full px-4 py-1.5 text-sm text-gray-300 hover:text-indigo-300 transition-all duration-200 hover:scale-95">
+          <a href="/instance/<%= req.params.id %>/ftp" class="srv-link group rounded-full px-4 py-1.5 text-sm text-gray-300 hover:text-green-300 transition-all duration-200 hover:scale-95">
             FTP
           </a>
-          <a href="/instance/<%= req.params.id %>/archives" class="srv-link group rounded-full px-4 py-1.5 text-sm text-gray-300 hover:text-indigo-300 transition-all duration-200 hover:scale-95">
+          <a href="/instance/<%= req.params.id %>/archives" class="srv-link group rounded-full px-4 py-1.5 text-sm text-gray-300 hover:text-green-300 transition-all duration-200 hover:scale-95">
             Backups
           </a>
-          <a href="/instance/<%= req.params.id %>/network" class="srv-link group rounded-full px-4 py-1.5 text-sm text-gray-300 hover:text-indigo-300 transition-all duration-200 hover:scale-95">
+          <a href="/instance/<%= req.params.id %>/network" class="srv-link group rounded-full px-4 py-1.5 text-sm text-gray-300 hover:text-green-300 transition-all duration-200 hover:scale-95">
             Network
           </a>
-          <a href="/instance/<%= req.params.id %>/startup" class="srv-link group rounded-full px-4 py-1.5 text-sm text-gray-300 hover:text-indigo-300 transition-all duration-200 hover:scale-95">
+          <a href="/instance/<%= req.params.id %>/startup" class="srv-link group rounded-full px-4 py-1.5 text-sm text-gray-300 hover:text-green-300 transition-all duration-200 hover:scale-95">
             Settings
           </a>
           <% if (instance.Image == "ghcr.io/ma4z-sys/yolks:minecraft_java_21") { %>
-          <a href="/instance/<%= req.params.id %>/plugins" class="srv-link group rounded-full px-4 py-1.5 text-sm text-gray-300 hover:text-indigo-300 transition-all duration-200 hover:scale-95">
+          <a href="/instance/<%= req.params.id %>/plugins" class="srv-link group rounded-full px-4 py-1.5 text-sm text-gray-300 hover:text-green-300 transition-all duration-200 hover:scale-95">
             Plugin Manager
           </a>
           <% } else if (instance.Image == "ghcr.io/ma4z-sys/yolks:java") { %>
-            <a href="/instance/<%= req.params.id %>/plugins" class="srv-link group rounded-full px-4 py-1.5 text-sm text-gray-300 hover:text-indigo-300 transition-all duration-200 hover:scale-95">
+            <a href="/instance/<%= req.params.id %>/plugins" class="srv-link group rounded-full px-4 py-1.5 text-sm text-gray-300 hover:text-green-300 transition-all duration-200 hover:scale-95">
               Plugin Manager
             </a>
           <% } %>
           <% addons.plugins.forEach(plugin => { %>
           <% if (plugin.instancesidebar) { %>
           <% Object.entries(plugin.instancesidebar).forEach(([key, value]) => { %>
-          <a href="<%= (value.url).replace('%id%', req.params.id) %>" class="srv-link group rounded-full px-4 py-1.5 text-sm text-gray-300 hover:text-indigo-300 transition-all duration-200 hover:scale-95">
+          <a href="<%= (value.url).replace('%id%', req.params.id) %>" class="srv-link group rounded-full px-4 py-1.5 text-sm text-gray-300 hover:text-green-300 transition-all duration-200 hover:scale-95">
             <%= key %>
           </a>
           <% }); %>
@@ -166,7 +166,7 @@
       <div class="block md:hidden">
         <button 
           onclick="openSlider()" 
-          class="rounded-full bg-indigo-600 text-white px-4 py-2 text-sm font-semibold transition-all duration-200 hover:bg-indigo-700">
+          class="rounded-full bg-green-600 text-white px-4 py-2 text-sm font-semibold transition-all duration-200 hover:bg-green-700">
           Open Menu
         </button>
       </div>

@@ -19,7 +19,7 @@
              <!-- New Server Button -->
     <button 
       id="createButton"
-      class="hover:scale-95 flex items-center justify-center h-11 gap-2 px-5 text-sm font-medium text-white transition-all duration-200 rounded-full shadow bg-indigo-500 hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-800 focus:ring-offset-2 ring-offset-gray-200 hover:shadow-none"
+      class="hover:scale-95 flex items-center justify-center h-11 gap-2 px-5 text-sm font-medium text-white transition-all duration-200 rounded-full shadow bg-green-500 hover:bg-green-700 focus:ring-2 focus:ring-green-800 focus:ring-offset-2 ring-offset-gray-200 hover:shadow-none"
     >
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="size-4">
         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -84,11 +84,11 @@
               <div class="grid grid-cols-2 gap-4">
                   <div>
                       <label class="text-white text-sm tracking-tight mb-2"><%= req.translations.name %>:</label>
-                      <input id="name" class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white rounded-lg placeholder-gray-400" placeholder="My instance">
+                      <input id="name" class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-green-500 focus:border-green-500 text-white rounded-lg placeholder-gray-400" placeholder="My instance">
                   </div>
                   <div>
                       <label class="text-white text-sm tracking-tight mb-2"><%= req.translations.user %>:</label>
-                      <select id="user" class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white rounded-lg placeholder-gray-400">
+                      <select id="user" class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-green-500 focus:border-green-500 text-white rounded-lg placeholder-gray-400">
                           <% users.forEach(function(user) { %>
                               <option value="<%= user.userId %>" class="text-neutral-800 text-sm tracking-tight mb-2"><%= user.username %></option>
                           <% }); %>
@@ -96,7 +96,7 @@
                   </div>
                   <div>
                       <label class="text-white text-sm tracking-tight mb-2"><%= req.translations.image %>:</label>
-                      <select id="image" class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white rounded-lg placeholder-gray-400">
+                      <select id="image" class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-green-500 focus:border-green-500 text-white rounded-lg placeholder-gray-400">
                           <% images.forEach(function(image) { %>
                               <option value="<%= image.Image %>" class="text-neutral-800 text-sm tracking-tight mb-2" data-configfilepath="<%= image.ConfigFilePath %>" data-imagename="<%= image.Name %>" data-configfilecontent="<%= image.ConfigFileContent %>" data-variables="<%= JSON.stringify(image.Variables) %>"><%= image.Name %> (<%= image.Image %>)</option>
                           <% }); %>
@@ -104,7 +104,7 @@
                   </div>
                   <div>
                       <label class="text-white text-sm tracking-tight mb-2"><%= req.translations.node %>:</label>
-                      <select id="node" class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white rounded-lg placeholder-gray-400">
+                      <select id="node" class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-green-500 focus:border-green-500 text-white rounded-lg placeholder-gray-400">
                           <% nodes.forEach(function(node) { %>
                               <option value="<%= node.id %>" class="text-neutral-800 text-sm tracking-tight mb-2"><%= node.name %></option>
                           <% }); %>
@@ -112,27 +112,27 @@
                   </div>
                   <div>
                       <label class="text-white text-sm tracking-tight mb-2"><%= req.translations.memory %> (MiB):</label>
-                      <input id="memory" class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white rounded-lg placeholder-gray-400" placeholder="2048">
+                      <input id="memory" class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-green-500 focus:border-green-500 text-white rounded-lg placeholder-gray-400" placeholder="2048">
                   </div>
                   <div>
                     <label class="text-white text-sm tracking-tight mb-2">Disk (GB):</label>
-                    <input id="disk" class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white rounded-lg placeholder-gray-400" placeholder="10">
+                    <input id="disk" class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-green-500 focus:border-green-500 text-white rounded-lg placeholder-gray-400" placeholder="10">
                 </div>
                   <div>
                       <label class="text-white text-sm tracking-tight mb-2"><%= req.translations.cpuThreads %>:</label>
-                      <input id="cpu" class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white rounded-lg placeholder-gray-400" placeholder="1">
+                      <input id="cpu" class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-green-500 focus:border-green-500 text-white rounded-lg placeholder-gray-400" placeholder="1">
                   </div>
                   <div>
                       <label class="text-white text-sm tracking-tight mb-2"><%= req.translations.ports %>:</label>
-                      <input id="ports" class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white rounded-lg placeholder-gray-400" placeholder="25565:25565,8080:8080">
+                      <input id="ports" class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-green-500 focus:border-green-500 text-white rounded-lg placeholder-gray-400" placeholder="25565:25565,8080:8080">
                   </div>
                   <div>
                       <label class="text-white text-sm tracking-tight mb-2"><%= req.translations.primaryPort %>:</label>
-                      <input id="primary" class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white rounded-lg placeholder-gray-400" placeholder="25565">
+                      <input id="primary" class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-green-500 focus:border-green-500 text-white rounded-lg placeholder-gray-400" placeholder="25565">
                   </div>
               </div>
               <div class="mt-4">
-                  <button id="createNodeBtn" type="button" class="w-32 flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-3 rounded-lg transition duration-300">
+                  <button id="createNodeBtn" type="button" class="w-32 flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-3 rounded-lg transition duration-300">
                       <%= req.translations.create %>
                   </button>
 
@@ -172,7 +172,7 @@ document.getElementById('image').addEventListener('change', function(event) {
                     fieldHtml = `
                         <div>
                             <label class="text-white text-sm tracking-tight mb-2">${key}:</label>
-                            <input type="text" name="${key}" value="${variable.default || ''}" class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white rounded-lg placeholder-gray-400 " ${variable.required ? 'required' : ''}>
+                            <input type="text" name="${key}" value="${variable.default || ''}" class="flex-grow p-2 w-full bg-white/10 border border-white/10 focus:ring-2 focus:ring-green-500 focus:border-green-500 text-white rounded-lg placeholder-gray-400 " ${variable.required ? 'required' : ''}>
                         </div>
                     `;
                 }
