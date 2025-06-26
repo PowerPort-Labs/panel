@@ -11,7 +11,7 @@ async function loadChalk() {
 
 program
     .version("0.1.0-beta6")
-    .description("Command Line Interface for the HydraPanel Panel");
+    .description("Command Line Interface for the PowerPort Panel");
 
 program
     .command('seed')
@@ -180,7 +180,7 @@ program
         }
         
         async function main() {
-            log.init('create a new *admin* user for the HydraPanel panel:')
+            log.init('create a new *admin* user for the PowerPort panel:')
             log.init('you can make regular users from the admin -> users page!')
             const username = await askQuestion("username: ");
             const email = await askQuestion("email: ");

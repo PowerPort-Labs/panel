@@ -1,10 +1,10 @@
 {
-  "name": "HydraPanel",
+  "name": "PowerPort",
   "version": "0.2.0",
-  "description": "HydraPanel is an open source panel for managing and operating game servers and applications built using Node.js with Express and Dockerode.",
+  "description": ".",
   "main": "index.js",
   "bin": {
-    "HydraPanel": "./exec/bin/index.js"
+    "pp": "./exec/bin/index.js"
   },
   "scripts": {
     "start": "node index.js",
@@ -15,7 +15,7 @@
     "build:user": "node exec/createUser.js",
     "build:css": "npx tailwindcss -i ./public/tw.conf -o ./public/assets/tailwind.css --watch"
   },
-  "author": "HydraPanelLabs",
+  "author": "Contributors/ma4z",
   "license": "ISC",
   "dependencies": {
     "@keyv/sqlite": "^3.6.7",

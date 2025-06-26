@@ -174,7 +174,7 @@ router.ws("/api/instance/console/:id", async (ws, req) => {
   };
 
   socket.onerror = (error) => {
-      ws.send('\x1b[31;1mHydraDaemon instance appears to be down')
+      ws.send('\x1b[31;1mDaemon instance appears to be down')
   };
 
   socket.onclose = (event) => {};
@@ -397,7 +397,7 @@ router.get('/api/images', validateApiKey, async (req, res) => {
 
 router.get('/api/name', validateApiKey, async (req, res) => {
   try {
-    const name = await db.get('name') || 'HydraPanel';
+    const name = await db.get('name') || 'PowerPort';
     res.json({ name });
   } catch (error) {
     res.status(500).json({ error: 'Failed to retrieve name' });

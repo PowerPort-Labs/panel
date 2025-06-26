@@ -35,7 +35,7 @@ router.get("/instances", isAuthenticated, async (req, res) => {
     res.render('instances', {
         req,
         user: req.user,
-        name: await db.get('name') || 'HydraPanel',
+        name: await db.get('name') || 'PowerPort',
         logo: await db.get('logo') || false,
         instances,
         config: require('../../config.json')
@@ -80,7 +80,7 @@ router.get("/instance/:id", async (req, res) => {
         port,
         domain,
         user: req.user,
-        name: await db.get('name') || 'HydraPanel',
+        name: await db.get('name') || 'PowerPort',
         logo: await db.get('logo') || false,
         files: await fetchFiles(instance, ""),
         addons: {
@@ -104,7 +104,7 @@ router.get("/instance/:id/installing", async (req,res) => {
     req,
     instance,
     user: req.user,
-    name: await db.get('name') || 'HydraPanel',
+    name: await db.get('name') || 'PowerPort',
     logo: await db.get('logo') || false,
     config: require('../../config.json')
    });

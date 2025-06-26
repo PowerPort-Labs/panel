@@ -35,7 +35,7 @@ jobs:
 
     - name: Check if the application is running
       run: |
-        if grep -q 'HydraPanel is listening on port 3001' app.log; then
+        if grep -q 'PowerPort is listening on port 3001' app.log; then
           echo "Application is running successfully.";
         else
           echo "Application failed to start.";

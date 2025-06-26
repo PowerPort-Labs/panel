@@ -70,8 +70,8 @@
           const statsWs = new WebSocket(`${protocol}://${window.location.hostname}:${window.location.port}/stats/${instanceId}`);
           statsWs.onmessage = event => {
               // Check if the event.data contains the specific string
-              if (event.data.includes("The HydraDaemon instance appears to be down. Retrying...")) {
-                  console.warn('HydraDaemon instance appears to be down. Executing node down handler...');
+              if (event.data.includes("The Daemon instance appears to be down. Retrying...")) {
+                  console.warn('Daemon instance appears to be down. Executing node down handler...');
                   executenodedown(instanceId);
                   return; // Exit early since no further processing is needed for this message
               }

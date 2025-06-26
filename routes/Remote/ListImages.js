@@ -5,7 +5,7 @@ const router = express.Router();
 
 /**
  * GET /images/list
- * Provides a list of all images available in the database for HydraDaemon to use on boot.
+ * Provides a list of all images available in the database for Daemon to use on boot.
  *
  * @returns {Response} Sends a JSON response containing an array of images.
  */

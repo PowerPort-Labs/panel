@@ -48,7 +48,7 @@ router.get("/instance/:id/files/view/:file", async (req, res) => {
             instance,
             file: fileContent, 
             user: req.user, 
-            name: await db.get('name') || 'HydraPanel', 
+            name: await db.get('name') || 'PowerPort', 
             logo: await db.get('logo') || false,
             addons: {
                 plugins: allPluginData
@@ -60,7 +60,7 @@ router.get("/instance/:id/files/view/:file", async (req, res) => {
             error: errorMessage, 
             req, 
             user: req.user, 
-            name: await db.get('name') || 'HydraPanel', 
+            name: await db.get('name') || 'PowerPort', 
             logo: await db.get('logo') || false,
             addons: {
                 plugins: allPluginData

@@ -1,6 +1,6 @@
 node_modules/
 public/assets/logo.png
-hydrapanel.db
+powerport.db
 sessions.db
 package-lock.json
 tmp/

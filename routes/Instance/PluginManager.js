@@ -109,7 +109,7 @@ router.get("/instance/:id/plugins", async (req, res) => {
         port,
         domain,
         user: req.user,
-        name: await db.get('name') || 'HydraPanel',
+        name: await db.get('name') || 'PowerPort',
         logo: await db.get('logo') || false,
         files: await fetchFiles(instance, ""),
         addons: {

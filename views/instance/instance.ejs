@@ -432,15 +432,15 @@ const eulaPopupHTML = `
                        
                                const friendlyMessages = {
                                    "Checking server disk space usage, this could take a few seconds...": 
-                                       "\u001b[1m\u001b[33m > [HydraPanel]\x1b[0m Performing container disk usage checks...",
+                                       "\u001b[1m\u001b[33m > [PowerPort]\x1b[0m Performing container disk usage checks...",
                                    "Updating process configuration files...": 
-                                       "\u001b[1m\u001b[33m > [HydraPanel]\x1b[0m Updating environment...",
+                                       "\u001b[1m\u001b[33m > [PowerPort]\x1b[0m Updating environment...",
                                    "Ensuring file permissions are set correctly, this could take a few seconds...": 
-                                       "\u001b[1m\u001b[33m > [HydraPanel]\x1b[0m Performing file permission checks...",
+                                       "\u001b[1m\u001b[33m > [PowerPort]\x1b[0m Performing file permission checks...",
                                    "Pulling Docker container image, this could take a few minutes to complete...": 
-                                       "\u001b[1m\u001b[33m > [HydraPanel]\x1b[0m Fetching Docker image...",
+                                       "\u001b[1m\u001b[33m > [PowerPort]\x1b[0m Fetching Docker image...",
                                    "Finished pulling Docker container image": 
-                                       "\u001b[1m\u001b[33m > [HydraPanel]\x1b[0m Completed Docker image pull!"
+                                       "\u001b[1m\u001b[33m > [PowerPort]\x1b[0m Completed Docker image pull!"
                                };
 
                                 if (action === 'start') {
@@ -583,7 +583,7 @@ const eulaPopupHTML = `
                 }
                 const instancestartedmessage = "<%= instance.imageData.StartedMessage %>" || 'For help, type "help"';
                 if (trimmedLine.includes(instancestartedmessage)) {
-                term.write('\n\u001b[1m\u001b[33mcontainer@hydra~ \u001b[0mServer marked as Started\r\n');
+                term.write('\n\u001b[1m\u001b[33mcontainer@plug~ \u001b[0mServer marked as Started\r\n');
             }
 
 
@@ -592,7 +592,7 @@ const eulaPopupHTML = `
                } 
                 let alertShown = false; // Flag to track if the alert has been shown
                
-               if (trimmedLine.includes("HydraDaemon instance appears to be down")) {
+               if (trimmedLine.includes("Daemon instance appears to be down")) {
                    if (!alertShown) {
                        showAlert('error', 'Node Connection Failed', 'Unable to establish a connection with the node. Please check the network or server status and try again.');
                        alertShown = true; // Set the flag to true after showing the alert

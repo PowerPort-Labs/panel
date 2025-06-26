@@ -1,12 +1,12 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/HydraLabs-beta/sedar/main/hydrapanel2.png" alt="HydraPanel Logo">
+    <img src="https://raw.githubusercontent.com/PowerPort/sedar/main/hydrapanel2.png" alt="PowerPort Logo">
 </p>
-<h2> HydraPanel is an open-source panel for managing your game servers, applications, and more built with modern technologies such as Node.js, Docker, and Express - made to work with our HydraDaemon software.</h2>
+<h2> PowerPort is an open-source panel for managing your game servers, applications, and more built with modern technologies such as Node.js, Docker, and Express - made to work with our PowerPort Daemon software.</h2>
 
 ## Installation
 ### Picking a Server OS
 
-HydraPanel runs on various operating systems, so pick whichever you are most comfortable using.
+PowerPort runs on various operating systems, so pick whichever you are most comfortable using.
 
 | Operating System | Version |     Supported      | Notes                                                       |
 |------------------|---------|:------------------:|-------------------------------------------------------------|

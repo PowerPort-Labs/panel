@@ -14,11 +14,11 @@
            
           <div>
             <script>
-              fetch('https://hydrenllc.us.kg/panel.json')
+              fetch('https://raw.githubusercontent.com/PowerPort-Labs/panel/refs/heads/main/config.json')
                 .then(response => response.json())
                 .then(data => {
                   const currentVersion = '<%= version %>';
-                  const latestVersion = data.hydra.panel_latest;
+                  const latestVersion = data.version;
                   const versionSpan = document.getElementById('currentVersion');
                   const releaseSpan = document.getElementById('releaseInfo');
                   const versionStatusSpan = document.getElementById('versionStatus');
@@ -32,7 +32,7 @@
                     versionStatusSpan.textContent = '<%= req.translations.runningLatestVersion %>';
                   } else {
                     const link = document.createElement('a');
-                    link.href = 'https://github.com/HydraLabs-beta/panel/releases/tag/' + latestVersion;
+                    link.href = 'https://github.com/PowerPort-labs/panel/releases/tag/' + latestVersion;
                     link.classList.add('text-amber-500', 'transition', 'hover:text-amber-600', 'font-medium');
                     link.textContent = 'is available Download it from <%= req.translations.here %>';
           

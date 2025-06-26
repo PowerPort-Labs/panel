@@ -4,6 +4,6 @@
     "domain": "localhost",
     "mode": "production",
     "version": "0.2.0",
-    "ogTitle": "HydraPanel",
-    "ogDescription": "This is an instance of the HydraPanel - learn more at github.com/hydren-dev/HydraPanel"
+    "ogTitle": "PowerPort",
+    "ogDescription": "PowerPort Manage your servers"
 } 
