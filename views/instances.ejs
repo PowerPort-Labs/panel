@@ -1,43 +1,38 @@
 <%- include('components/template') %>
-<main class="container flex-grow px-4 py-8 mx-auto">
-  <div class="flex items-center justify-between w-full pb-4 mx-auto">
+<main class="container flex-grow px-4 py-12 mx-auto font-space text-white">
+  <!-- Background layers like login.ejs -->
+  <div class="flex items-center justify-between w-full pb-6 mx-auto">
     <div class="flex flex-col">
-      <h1 class="text-xl font-semibold mb-0.5 heavy">Instances</h1>
-      <p class="text-gray-400 text-md">Overview of your servers on <%= name %>.</p>
+      <h1 class="text-3xl font-bold mb-1">Instances</h1>
+      <p class="text-gray-300 text-sm">Overview of your servers on <%= name %>.</p>
     </div>
     <script>
       const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
-    
+
       function updateRamUsage(stats, instanceId) {
         const ramStatsUsage = stats.memory_stats.usage || 0;
         const ramStatsLimit = stats.memory_stats.limit || 0;
-    
+
         const ramUsageRaw = ramStatsUsage / 1024 / 1024 || 0;
         const ramLimitRaw = ramStatsLimit / 1024 / 1024 || 0;
         const ramUsagePercent = (ramLimitRaw > 0) ? ((ramUsageRaw / ramLimitRaw) * 100).toFixed(2) : '0.00';
-        
-        // Update the specific instance's RAM usage
         document.getElementById(`ramUsagetext_${instanceId}`).textContent = `${ramUsagePercent}%`;
       }
-    
+
       function updateCpuUsage(stats, instanceId) {
         const cpuDelta = stats.cpu_stats.cpu_usage.total_usage - stats.precpu_stats.cpu_usage.total_usage;
         const systemCpuDelta = stats.cpu_stats.system_cpu_usage - stats.precpu_stats.system_cpu_usage;
         let cpuUsagePercent = ((cpuDelta / systemCpuDelta) * 100).toFixed(2);
-    
         if (isNaN(cpuUsagePercent)) {
           cpuUsagePercent = 0;
         }
-    
-        // Update the specific instance's CPU usage
         document.getElementById(`cpuUsagetext_${instanceId}`).textContent = `${cpuUsagePercent}%`;
       }
-    
+
       function updateStatus(stats, instanceId) {
         const statusElement = document.getElementById(`status_${instanceId}`);
         const ramUsageRaw = stats.memory_stats.usage / 1024 / 1024 || 0;
-        
-        // Set the status based on RAM usage
+
         if (ramUsageRaw > 1) {
           statusElement.textContent = 'Online';
           statusElement.className = 'text-emerald-500 bg-neutral-600/10 px-2 py-0.5 rounded-lg';
@@ -46,17 +41,19 @@
           statusElement.className = 'text-red-500 bg-neutral-500/10 px-2 py-0.5 rounded-lg';
         }
       }
+
       function executenodedown(instanceId) {
         const statusElement = document.getElementById(`status_${instanceId}`);
         statusElement.textContent = 'Node Offline';
         statusElement.className = 'text-red-500 bg-neutral-500/10 px-2 py-0.5 rounded-lg';
       }
-    
+
       function executecontainernotfound(instanceId) {
         const statusElement = document.getElementById(`status_${instanceId}`);
         statusElement.textContent = 'Container not found';
         statusElement.className = 'text-yellow-500 bg-neutral-500/10 px-2 py-0.5 rounded-lg';
       }
+
       function isValidJson(str) {
         try {
           JSON.parse(str);
@@ -65,56 +62,42 @@
         }
         return true;
       }
-    
+
       function initStatsWebSocket(instanceId) {
-          const statsWs = new WebSocket(`${protocol}://${window.location.hostname}:${window.location.port}/stats/${instanceId}`);
-          statsWs.onmessage = event => {
-              // Check if the event.data contains the specific string
-              if (event.data.includes("The Daemon instance appears to be down. Retrying...")) {
-                  console.warn('Daemon instance appears to be down. Executing node down handler...');
-                  executenodedown(instanceId);
-                  return; // Exit early since no further processing is needed for this message
-              }
-      
-               // Check if the event.data contains the specific string
-               if (event.data.includes("Container not found")) {
-                  executecontainernotfound(instanceId);
-                  return; // Exit early since no further processing is needed for this message
-              }
-              // Check if the data is valid JSON and process it
-              if (isValidJson(event.data)) {
-                  const stats = JSON.parse(event.data);
-                  if (stats.error) {
-                      console.error('Error fetching stats:', stats.error);
-                      return;
-                  }
-      
-                  updateRamUsage(stats, instanceId);
-                  updateCpuUsage(stats, instanceId);
-                  updateStatus(stats, instanceId);
-              } else {
-                  console.log('Received non-JSON data:', event.data);
-              }
-          };            
-          statsWs.onerror = error => {
-              console.error('WebSocket error:', error);
-          };
-      
-          statsWs.onclose = () => {
-              console.log('WebSocket closed for instance:', instanceId);
-          };
-    
+        const statsWs = new WebSocket(`${protocol}://${window.location.hostname}:${window.location.port}/stats/${instanceId}`);
+        statsWs.onmessage = event => {
+          if (event.data.includes("The Daemon instance appears to be down. Retrying...")) {
+            executenodedown(instanceId);
+            return;
+          }
+
+          if (event.data.includes("Container not found")) {
+            executecontainernotfound(instanceId);
+            return;
+          }
+
+          if (isValidJson(event.data)) {
+            const stats = JSON.parse(event.data);
+            if (stats.error) return;
+            updateRamUsage(stats, instanceId);
+            updateCpuUsage(stats, instanceId);
+            updateStatus(stats, instanceId);
+          }
+        };
+        statsWs.onerror = error => {
+          console.error('WebSocket error:', error);
+        };
         statsWs.onclose = () => {
-            console.log(`WebSocket Stats connection for instance ${instanceId} closed, attempting to reconnect...`);
-            setTimeout(() => initStatsWebSocket(instanceId), 3000);
+          console.log(`WebSocket Stats connection for instance ${instanceId} closed, attempting to reconnect...`);
+          setTimeout(() => initStatsWebSocket(instanceId), 3000);
         };
       }
     </script>
     <script>
       function InstallingState(instanceId) {
-       const statusElement = document.getElementById(`status_${instanceId}`);
-       statusElement.textContent = 'INSTALLING';
-       statusElement.className = 'text-green-500';
+        const statusElement = document.getElementById(`status_${instanceId}`);
+        statusElement.textContent = 'INSTALLING';
+        statusElement.className = 'text-green-500';
       }
     </script>
     <div class="flex items-center gap-3 mb-12">
@@ -146,19 +129,7 @@
       <% } %>
     </div>
   </div>
-<!-- Servers List Header -->
-<div class="overflow-hidden shadow ring-1 ring-white/10 rounded-lg mb-12">
-  <table class="min-w-full divide-y divide-white/10">
-    <thead class="bg-white/5">
-      <tr>
-        <th class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-6">Server</th>
-        <th class="px-3 py-3.5 text-left text-sm font-semibold text-white">Status</th>
-        <th class="px-3 py-3.5 text-left text-sm font-semibold text-white">RAM Usage</th>
-        <th class="px-3 py-3.5 text-left text-sm font-semibold text-white">CPU Usage</th>
-        <th class="px-3 py-3.5 text-left text-sm font-semibold text-white">Ip Address</th>
-      </tr>
-    </thead>
-    <% if (req.query.err === "CONTAINER_NOT_FOUND") { %>
+<% if (req.query.err === "CONTAINER_NOT_FOUND") { %>
       <div class="rounded-xl bg-red-100 dark:bg-red-800/10 px-4 py-6 m-7 mb-4">
         <div class="flex">
           <div class="flex-shrink-0 ml-1.5">
@@ -188,36 +159,56 @@
         </div>
       </div>
     <% } %>
-    <tbody class="divide-y divide-white/10 bg-white/5">
-      <% instances.forEach(instance => { %>
-        <tr onclick="window.location.href = '../instance/<%= instance.Id %>';" class="hover:bg-white/10 cursor-pointer">
-          <td class="py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-6 server-name"><%= instance.Name %></td>
-          <% if (instance.suspended === true) { %>
-            <td class="px-3 py-4 text-sm">
-              <span class="inline-flex items-center px-2.5 py-0.5 text-xs font-extrabold rounded-full bg-amber-100">
-                Suspended
-              </span>
-            </td>
-          <% } else { %>
-            <td class="px-3 py-4 text-sm">
-              <span id="status_<%= instance.Id %>" class="bg-neutral-500/10 inline-flex items-center px-2.5 py-0.5 text-xs font-extrabold rounded-full">
-              Connecting
-              </span>
-            </td>
-          <% } %>
-          
-          <td class="px-3 py-4 text-sm text-neutral-300"><span id="ramUsagetext_<%= instance.Id %>" class="border border-neutral-600/20 bg-neutral-500/10 px-2 py-0.5 rounded-lg">Connecting</td>
-          <td class="px-3 py-4 text-sm text-neutral-300"><span id="cpuUsagetext_<%= instance.Id %>" class="border border-neutral-600/20 bg-neutral-500/10 px-2 py-0.5 rounded-lg">Connecting</span></td>
-          <td class="px-3 py-4 text-sm text-neutral-300"><span class="border border-neutral-600/20 bg-neutral-500/10 px-2 py-0.5 rounded-lg"><%= instance.Node.address %>:<%= instance.Primary %></span></td>
+  <!-- 💠 Glass Box for Servers -->
+  <div class="bg-black/40 backdrop-blur-md border border-white/10 rounded-xl p-6 w-full shadow-xl transition-all duration-300">
+    <table class="min-w-full divide-y divide-white/10">
+      <thead class="bg-white/5">
+        <tr>
+          <th class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-6">Server</th>
+          <th class="px-3 py-3.5 text-left text-sm font-semibold text-white">Status</th>
+          <th class="px-3 py-3.5 text-left text-sm font-semibold text-white">RAM Usage</th>
+          <th class="px-3 py-3.5 text-left text-sm font-semibold text-white">CPU Usage</th>
+          <th class="px-3 py-3.5 text-left text-sm font-semibold text-white">Ip Address</th>
         </tr>
-        <script>
-          initStatsWebSocket('<%= instance.Id %>');
-        </script>
-      <% }); %>
-    </tbody>
-  </table>
-</div>
-           </div>
-    </main>      
-</body>
-</html>
+      </thead>
+      <% if (req.query.err === "CONTAINER_NOT_FOUND") { %>
+        <div class="rounded-xl bg-red-100 dark:bg-red-800/10 px-4 py-6 m-7 mb-4">
+          <div class="flex">
+            <div class="flex-shrink-0 ml-1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-11 w-8 text-red-500 dark:text-red-400" viewBox="0 0 24 24" fill="none">
+                <path stroke-linecap="round" stroke-linejoin="round" d="..." />
+              </svg>
+            </div>
+            <div class="ml-5">
+              <h3 class="text-sm font-medium text-red-700 dark:text-red-400">Container not found</h3>
+              <p class="text-sm text-red-500 dark:text-red-400/50">Server not found in the node.</p>
+            </div>
+          </div>
+        </div>
+      <% } %>
+
+      <tbody class="divide-y divide-white/10 bg-white/5">
+        <% instances.forEach(instance => { %>
+          <tr onclick="window.location.href = '../instance/<%= instance.Id %>';" class="hover:bg-white/10 cursor-pointer">
+            <td class="py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-6"><%= instance.Name %></td>
+            <% if (instance.suspended === true) { %>
+              <td class="px-3 py-4 text-sm">
+                <span class="inline-flex items-center px-2.5 py-0.5 text-xs font-extrabold rounded-full bg-amber-100">Suspended</span>
+              </td>
+            <% } else { %>
+              <td class="px-3 py-4 text-sm">
+                <span id="status_<%= instance.Id %>" class="bg-neutral-500/10 inline-flex items-center px-2.5 py-0.5 text-xs font-extrabold rounded-full">Connecting</span>
+              </td>
+            <% } %>
+            <td class="px-3 py-4 text-sm text-neutral-300"><span id="ramUsagetext_<%= instance.Id %>" class="border border-neutral-600/20 bg-neutral-500/10 px-2 py-0.5 rounded-lg">Connecting</span></td>
+            <td class="px-3 py-4 text-sm text-neutral-300"><span id="cpuUsagetext_<%= instance.Id %>" class="border border-neutral-600/20 bg-neutral-500/10 px-2 py-0.5 rounded-lg">Connecting</span></td>
+            <td class="px-3 py-4 text-sm text-neutral-300"><span class="border border-neutral-600/20 bg-neutral-500/10 px-2 py-0.5 rounded-lg"><%= instance.Node.address %>:<%= instance.Primary %></span></td>
+          </tr>
+          <script>
+            initStatsWebSocket('<%= instance.Id %>');
+          </script>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+</main>
