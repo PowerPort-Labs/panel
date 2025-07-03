@@ -1,48 +1,68 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title><%= name %> - Login</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@500,300,600,400,700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-  </style>
+  <%- include('../components/head') %>
 </head>
-<body class="h-screen w-screen flex items-center justify-center font-sans text-white">
+<body class="h-screen w-screen flex items-center justify-center font-space text-white relative">
+  <div class="fixed inset-0 bg-cover bg-center bg-no-repeat z-[-2]" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80')"></div>
+  <div class="fixed inset-0 bg-black/70 z-[-1]"></div>
+  <div class="fixed bottom-0 left-0 w-full h-1/2 z-[-1]" style="background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.7) 80%, rgba(0,0,0,0.9) 100%);"></div>
 
-  <div class="bg-gray-400/10 backdrop-blur-sm border border-gray-400/30 rounded-2xl shadow-xl p-8 w-full max-w-md">
-    <div class="flex justify-center mb-6">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-        stroke-width="1.5" stroke="currentColor" class="w-14 h-14 text-white">
-        <path stroke-linecap="round" stroke-linejoin="round"
-          d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 
-          2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 
-          2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
-      </svg>
+  <div class="bg-black/40 backdrop-blur-md border border-white/10 rounded-xl p-10 w-full max-w-md shadow-xl transition-all duration-300">
+    <div class="flex justify-center mb-8">
+      <img src="/assets/powerportlogo.png" alt="PowerPort Logo" class="w-60">
     </div>
 
-    <h2 class="text-center text-3xl font-bold mb-2">Welcome Back</h2>
-    <p class="text-center text-sm text-gray-300 mb-6">Login to continue</p>
+    <h2 class="text-center text-3xl font-bold mb-2 text-white font-space tracking-tight">Welcome Back</h2>
+    <p class="text-center text-sm text-gray-300 mb-8 font-space">Sign in to continue</p>
 
-    <form action="/auth/login" method="GET" class="space-y-4">
-      <input type="text" name="username" placeholder="Username" required
-        class="w-full p-3 bg-gray-400/10 backdrop-blur-sm border border-gray-400/30 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-white/20" />
+    <form action="/auth/login" method="GET" class="space-y-6">
+      <div class="space-y-2">
+        <label for="username" class="text-sm font-medium text-gray-300 ml-1 font-space">Username</label>
+        <div class="relative">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white/50" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <input type="text" name="username" id="username" placeholder="Enter your username" required
+            class="w-full p-3 pl-10 bg-black/30 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all duration-200 font-space" />
+        </div>
+      </div>
 
-      <input type="password" name="password" placeholder="Password" required
-        class="w-full p-3 bg-gray-400/10 backdrop-blur-sm border border-gray-400/30 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-white/20" />
+      <div class="space-y-2">
+        <label for="password" class="text-sm font-medium text-gray-300 ml-1 font-space">Password</label>
+        <div class="relative">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white/50" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <input type="password" name="password" id="password" placeholder="Enter your password" required
+            class="w-full p-3 pl-10 bg-black/30 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all duration-200 font-space" />
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <div class="flex items-center">
+          <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 rounded border-gray-600 text-white focus:ring-white/50">
+          <label for="remember-me" class="ml-2 block text-sm text-gray-300 font-space">Remember me</label>
+        </div>
+        <div class="text-sm">
+          <a href="/auth/reset-password" class="font-medium text-white hover:text-gray-200 transition-colors font-space">Forgot password?</a>
+        </div>
+      </div>
 
       <button type="submit"
-        class="w-full py-3 rounded-lg bg-gradient-to-r from-green-600 to-lime-500 hover:from-green-700 hover:to-lime-600 text-white font-semibold transition duration-300">
+        class="w-full py-3 rounded-lg bg-white text-black font-semibold transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.4)] hover:-translate-y-0.5 font-space">
         Sign In
       </button>
     </form>
+
+    <div class="mt-8 text-center text-sm">
+      <span class="text-gray-400 font-space">Don't have an account?</span>
+      <a href="/auth/register" class="font-medium text-white hover:text-gray-200 ml-1 transition-colors font-space">Create one</a>
+    </div>
   </div>
 
 </body>
