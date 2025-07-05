@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://media.discordapp.net/attachments/1313518532889415743/1390952268676857897/wmremove-transformed.png?ex=686a20bf&is=6868cf3f&hm=8c7734ee7505563db1cc30caed5431fcc45717762c66f65a95e0846404899cc3&=&format=webp&quality=lossless&width=662&height=434" alt="PowerPort Logo">
+    <img src="https://media.discordapp.net/attachments/1313518532889415743/1390952643853291682/wmremove-transformed-modified.png?ex=686a2118&is=6868cf98&hm=1f5e93d2fb1a0d1bd1f1a0d2daf9feb2eaaa1556e1d5095b0f74b6aa84b73c0e&=&format=webp&quality=lossless&width=662&height=434" alt="PowerPort Logo">
 </p>
 <h2> PowerPort is an open-source panel for managing your game servers, applications, and more built with modern technologies such as Node.js, Docker, and Express - made to work with our PowerPort Daemon software.</h2>
 
