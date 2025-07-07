@@ -42,34 +42,45 @@
                 <% } %>
             </div>
 
-            <% users.forEach(function(user) { %>
-            <div class="md:grid hidden mb-4 bg-white/5 rounded-2xl hover:bg-white/10 border-2 border-dashed border-transparent hover:border-white/5 transition px-6 py-4 grid grid-cols-12 gap-4 items-center cursor-pointer">
-                <!-- Server Name & Node -->
-                <div class="col-span-2">
-                    <div class="font-medium text-white"><%= user.username %></div>
-                </div>
+           <% users.forEach(function(user) { %>
+  <div class="md:grid hidden mb-4 bg-white/5 rounded-2xl hover:bg-white/10 border-2 border-dashed border-transparent hover:border-white/5 transition px-6 py-4 grid grid-cols-12 gap-4 items-center cursor-pointer">
+    
+    <!-- Avatar + Username -->
+    <div class="col-span-2 flex items-center gap-2">
+      <img 
+        class="h-8 w-8 rounded-full bg-transparent" 
+        src="https://api.dicebear.com/7.x/fun-emoji/svg?seed=<%= encodeURIComponent(user.username) %>" 
+        alt="Avatar">
+      <div class="font-medium text-white"><%= user.username %></div>
+    </div>
 
-                <!-- Status -->
-                <div class="col-span-2">
-                    <div class="inline-flex items-center px-5 py-1 rounded-full text-xs font-medium bg-zinc-500/20 text-zinc-300">
-                        <div class="flex items-center space-x-2">
-                            <span class="text-zinc-300 text-sm"><%= user.email %></span>
-                        </div>
-                    </div>
-                </div>
-<br>
-                <div class="col-span-2">
-                  <% if (user.admin==true) { %>
-                  <div class="font-medium text-white">Admin</div>
-                  <% } else if (user.admin==false) { %>
-                    <div class="font-medium text-white">Regular User</div>
-                    <% } %>
-              </div>
-                <!-- Remove, Edit Button -->
-                <a class="bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-1 px-4 rounded-full text-sm hover:scale-95 cursor-pointer" href="/admin/users/edit/<%= user.userId %>">Edit</a>
+    <!-- Email -->
+    <div class="col-span-2">
+      <div class="inline-flex items-center px-5 py-1 rounded-full text-xs font-medium bg-zinc-500/20 text-zinc-300">
+        <span class="text-zinc-300 text-sm"><%= user.email %></span>
+      </div>
+    </div>
 
-                <a class="bg-red-600 hover:bg-red-700 text-white font-medium py-1 px-4 rounded-full text-sm hover:scale-95 cursor-pointer" id="removeButton">Remove</a>
-            </div>
+    <!-- Admin Status -->
+    <div class="col-span-2">
+      <% if (user.admin == true) { %>
+        <div class="font-medium text-white">Admin</div>
+      <% } else { %>
+        <div class="font-medium text-white">Regular User</div>
+      <% } %>
+    </div>
+
+    <!-- Edit Button -->
+    <a class="bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-1 px-4 rounded-full text-sm hover:scale-95 cursor-pointer" href="/admin/users/edit/<%= user.userId %>">
+      Edit
+    </a>
+
+    <!-- Remove Button -->
+    <a class="bg-red-600 hover:bg-red-700 text-white font-medium py-1 px-4 rounded-full text-sm hover:scale-95 cursor-pointer" id="removeButton">
+      Remove
+    </a>
+
+  </div>
             <!--Mobile Users-->
             <div class="md:hidden grid mb-4 bg-white/5 rounded-2xl hover:bg-white/10 border-2 border-dashed border-transparent hover:border-white/5 transition px-6 py-4 grid grid-cols-12 gap-4 items-center cursor-pointer">
               <!-- Server Name & Node -->

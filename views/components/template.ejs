@@ -186,7 +186,7 @@
         x-transition:leave-end="opacity-0"><button onclick="openSidebar()"></button></div>
 
     <!-- Sidebar -->
-    <aside class="fixed inset-0 z-40 transform md:translate-x-0 md:static md:inset-auto md:h-screen md:w-64 border-r border-b rounded-br-3xl border-white/5 bg-white/7 sidebar-transition"
+    <aside class="backdrop-blur-lg fixed inset-0 z-40 transform md:translate-x-0 md:static md:inset-auto md:h-screen md:w-64 border-r border-b rounded-br-3xl border-white/5 bg-white/7 sidebar-transition"
     :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'">
         <div class="flex flex-col h-full relative">
             <!-- Close button for mobile -->
@@ -208,7 +208,7 @@
 
 <div class="flex items-center justify-center">
         <div class="flex items-center">
-            <img src="https://media.discordapp.net/attachments/1390245741510787194/1390247274981883924/powerportlogo.png?ex=68698a6b&is=686838eb&hm=0caedd70ef460bce5535854842643612b8e0934fc724f912eb0ac019fa31a0b2&=&format=webp&quality=lossless&width=972&height=397" alt="quakz Logo" class="hover:scale-95 transition h-24">
+            <img src="https://cdn.discordapp.com/attachments/1390245741510787194/1390247274981883924/powerportlogo.png?ex=686cd62b&is=686b84ab&hm=2d665fbe569d748a47f62172d62622a31e043740a55b89fb5eb986028e5460bc&" alt="Logo" class="hover:scale-95 transition h-24">
         </div>
     </div>
   <!-- Project Section -->
@@ -252,11 +252,16 @@
 </div>
 <div class="flex items-center mt-auto mb-4 py-2 mx-2 border-t border-white/5">
         <button
-            onclick="window.location.href='/logout'"
+            onclick="window.location.href='/auth/logout'"
             class="flex items-center gap-1.5 w-full px-3 py-1.5 text-zinc-400 cursor-pointer hover:bg-white/5 transition rounded-md">
-            <div class="flex items-center gap-1.5">
-                <span class="ml-1 text-sm"><%= user.username %></span>
+           <div class="flex items-center gap-1.5">
+             <img 
+                 class="h-8 w-8 rounded-full bg-transparent" 
+                 src="https://api.dicebear.com/7.x/fun-emoji/svg?seed=<%= encodeURIComponent(user.username) %>" 
+                 alt="Avatar">
+             <span class="ml-1 text-sm"><%= user.username %></span>
             </div>
+
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                 class="w-4 h-4 ml-auto">
                 <path fill-rule="evenodd"
