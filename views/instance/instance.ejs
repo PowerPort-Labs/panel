@@ -800,7 +800,7 @@ function updateCpuUsage(stats) {
         cpuUsagePercent = 0;
     }
 
-    const total_cpu = '<%= instance.Cpu %>' + '00';  // Concatenate '00' to the value
+    const total_cpu = '100';  // Concatenate '00' to the value
     // Update CPU usage text content
     document.getElementById('cpuUsage').textContent = `${cpuUsagePercent}% / ${total_cpu}%`;
 
