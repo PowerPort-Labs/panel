@@ -790,7 +790,6 @@ const eulaPopupHTML = `
     }
 }
         
-     // Update CPU Usage
 function updateCpuUsage(stats) {
     const cpuDelta = stats.cpu_stats.cpu_usage.total_usage - stats.precpu_stats.cpu_usage.total_usage;
     const systemCpuDelta = stats.cpu_stats.system_cpu_usage - stats.precpu_stats.system_cpu_usage;
@@ -800,11 +799,9 @@ function updateCpuUsage(stats) {
         cpuUsagePercent = 0;
     }
 
-    const total_cpu = '100';  // Concatenate '00' to the value
-    // Update CPU usage text content
+    const total_cpu = '100'; 
     document.getElementById('cpuUsage').textContent = `${cpuUsagePercent}% / ${total_cpu}%`;
 
-    // Select the container div for CPU usage
     const cpuUsageContainer = document.getElementById('cpuUsageContainer');
     const cpuProgressbar = document.getElementById('cpuProgressBar');
     cpuProgressbar.style.width = cpuUsagePercent + '%';
@@ -817,7 +814,6 @@ function updateCpuUsage(stats) {
     }
 }
 
-// Update Disk Usage
 function updateDiskUsage(stats) {
     const diskUsageRaw = parseFloat(stats.volumeSize); // in MB
     const diskLimitRaw = <%= instance.Disk %> * 1024; 
@@ -846,7 +842,7 @@ function updateDiskUsage(stats) {
             
             if (ramUsageRaw > 1) {
     statusElement.textContent = '.Online';
-    statusElement.className = 'text-emerald-500'; // Smaller text
+    statusElement.className = 'text-emerald-500'; 
 } 
 
         }
