@@ -47,16 +47,23 @@
     }, 5000);
 }
 const eulaPopupHTML = `
-        <div id="eula-popup" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-          <div class="bg-[#1b1d21] p-10 rounded-2xl shadow-xl max-w-md w-full">
-            <h2 class="text-xl font-bold mb-4 text-white heavy">Minecraft EULA Agreement</h2>
-            <p class="text-gray-300 mb-6">You need to agree to the Minecraft End User License Agreement (EULA) to run this server.</p>
-            <div class="flex justify-end space-x-2.5">
-              <button id="decline-eula" class="px-4 py-2 bg-red-600 text-white rounded-l-xl rounded-r-lg hover:bg-red-700 transition-colors">Decline</button>
-              <button id="accept-eula" class="px-4 py-2 bg-emerald-600 text-white rounded-r-xl rounded-l-lg hover:bg-emerald-700 transition-colors">Accept</button>
-            </div>
-          </div>
-        </div>
+      <div id="eula-popup" class="fixed inset-0 bg-black bg-opacity-40 hidden items-center justify-center z-50">
+  <div class="bg-[#141414] p-6 rounded-xl shadow-lg max-w-md w-full">
+    <h2 class="text-lg font-semibold mb-3 text-white">Minecraft EULA Agreement</h2>
+    <p class="text-white/70 mb-5 text-sm">
+      You need to agree to the Minecraft End User License Agreement (EULA) to run this server.
+    </p>
+    <div class="flex justify-end gap-2">
+      <button id="decline-eula" class="px-4 py-1.5 bg-red-600 text-white rounded-md hover:bg-red-700 text-sm">
+        Decline
+      </button>
+      <button id="accept-eula" class="px-4 py-1.5 bg-green-600 text-white rounded-md hover:bg-green-700 text-sm">
+        Accept
+      </button>
+    </div>
+  </div>
+</div>
+
     `;
 
     // Append the EULA popup HTML to the body
@@ -131,7 +138,7 @@ const eulaPopupHTML = `
     </div>
     <!--div class="card rounded-xl p-4">
         <div class="flex items-center justify-between mb-2">
-            <h2 class="text-lg font-semibold text-white heavy"><%= instance.Name %></h2>
+            <h2 class="text-lg font-semibold text-white"><%= instance.Name %></h2>
         </div>
         <div class="space-y-2 text-sm">
     <div class="flex items-center text-gray-400">
@@ -147,17 +154,17 @@ const eulaPopupHTML = `
     
                 <span><%= instance.Node.address %>:<%= instance.Primary %></span>
             </div>
-            <button id="startButton" onclick="powerAction('start')" class="heavy h-12 w-12 hover:scale-95 bg-green-500/15 hover:bg-green-500/25 text-green-300 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed" title="Start Server">
+            <button id="startButton" onclick="powerAction('start')" class= h-12 w-12 hover:scale-95 bg-green-500/15 hover:bg-green-500/25 text-green-300 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed" title="Start Server">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mx-auto">
                     <path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd" />
                 </svg>
             </button>
-            <button id="restartButton" onclick="powerAction('restart')" class="heavy h-12 w-12 hover:scale-95 bg-green-500/15 hover:bg-green-500/25 text-green-300 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed" title="Restart Server">
+            <button id="restartButton" onclick="powerAction('restart')" class= h-12 w-12 hover:scale-95 bg-green-500/15 hover:bg-green-500/25 text-green-300 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed" title="Restart Server">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mx-auto">
                     <path fill-rule="evenodd" d="M4.755 10.059a7.5 7.5 0 0 1 12.548-3.364l1.903 1.903h-3.183a.75.75 0 1 0 0 1.5h4.992a.75.75 0 0 0 .75-.75V4.356a.75.75 0 0 0-1.5 0v3.18l-1.9-1.9A9 9 0 0 0 3.306 9.67a.75.75 0 1 0 1.45.388Zm15.408 3.352a.75.75 0 0 0-.919.53 7.5 7.5 0 0 1-12.548 3.364l-1.902-1.903h3.183a.75.75 0 0 0 0-1.5H2.984a.75.75 0 0 0-.75.75v4.992a.75.75 0 0 0 1.5 0v-3.18l1.9 1.9a9 9 0 0 0 15.059-4.035.75.75 0 0 0-.53-.918Z" clip-rule="evenodd" />
                 </svg>
             </button>
-            <button id="stopButton" onclick="powerAction('stop')" class="heavy h-12 w-12 hover:scale-95 bg-green-500/15 hover:bg-green-500/25 text-green-300 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed" title="Stop Server">
+            <button id="stopButton" onclick="powerAction('stop')" class= h-12 w-12 hover:scale-95 bg-green-500/15 hover:bg-green-500/25 text-green-300 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed" title="Stop Server">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mx-auto">
                     <path fill-rule="evenodd" d="M4.5 7.5a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-9a3 3 0 0 1-3-3v-9Z" clip-rule="evenodd" />
                 </svg>
@@ -174,7 +181,7 @@ const eulaPopupHTML = `
       <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
         <div class="lg:col-span-3 space-y-6">
             <div class="bg-white/5 card rounded-xl p-6">
-                <h2 class="text-lg font-semibold heavy">Console</h2>
+                <h2 class="text-lg font-semibold">Console</h2>
                 <span class="text-gray-300 text-sm mt-1 mb-4">Send commands to your server, view important logs and more.</span>
 <div class="border-t border-white/5 mt-4"></div>
                 <div id="terminal" class="bg-black/20 p-4 rounded-xl border border-white/5 shadow-sm scrollbar-hide overflow-x-auto mb-4">
@@ -241,17 +248,17 @@ const eulaPopupHTML = `
                         <div class="bg-white/5 card rounded-xl p-6">
                             <div>
                                 <div class="flex space-x-2 mb-4">
-                                    <button id="startButton" class="heavy h-12 w-12 hover:scale-95 bg-green-500/15 hover:bg-green-500/25 text-green-300 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed" title="Start Server">
+                                    <button id="startButton" class= h-12 w-12 hover:scale-95 bg-green-500/15 hover:bg-green-500/25 text-green-300 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed" title="Start Server">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mx-auto">
                                             <path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd" />
                                         </svg>
                                     </button>
-                                    <button id="restartButton" class="heavy h-12 w-12 hover:scale-95 bg-green-500/15 hover:bg-green-500/25 text-green-300 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed" title="Restart Server">
+                                    <button id="restartButton" class= h-12 w-12 hover:scale-95 bg-green-500/15 hover:bg-green-500/25 text-green-300 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed" title="Restart Server">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mx-auto">
                                             <path fill-rule="evenodd" d="M4.755 10.059a7.5 7.5 0 0 1 12.548-3.364l1.903 1.903h-3.183a.75.75 0 1 0 0 1.5h4.992a.75.75 0 0 0 .75-.75V4.356a.75.75 0 0 0-1.5 0v3.18l-1.9-1.9A9 9 0 0 0 3.306 9.67a.75.75 0 1 0 1.45.388Zm15.408 3.352a.75.75 0 0 0-.919.53 7.5 7.5 0 0 1-12.548 3.364l-1.902-1.903h3.183a.75.75 0 0 0 0-1.5H2.984a.75.75 0 0 0-.75.75v4.992a.75.75 0 0 0 1.5 0v-3.18l1.9 1.9a9 9 0 0 0 15.059-4.035.75.75 0 0 0-.53-.918Z" clip-rule="evenodd" />
                                         </svg>
                                     </button>
-                                    <button id="stopButton" class="heavy h-12 w-12 hover:scale-95 bg-green-500/15 hover:bg-green-500/25 text-green-300 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed" title="Stop Server">
+                                    <button id="stopButton" class= h-12 w-12 hover:scale-95 bg-green-500/15 hover:bg-green-500/25 text-green-300 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed" title="Stop Server">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mx-auto">
                                             <path fill-rule="evenodd" d="M4.5 7.5a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-9a3 3 0 0 1-3-3v-9Z" clip-rule="evenodd" />
                                         </svg>
@@ -265,7 +272,7 @@ const eulaPopupHTML = `
                                 </div>
                                 </div>
                             <div class="flex items-center justify-between mb-2">
-                                <h2 class="text-lg font-semibold text-white heavy" id="server-name-card"><%= instance.Name %></h2>
+                                <h2 class="text-lg font-semibold text-white" id="server-name-card"><%= instance.Name %></h2>
                             </div>
                             <div class="space-y-2 text-sm">
                                 
@@ -404,54 +411,50 @@ const eulaPopupHTML = `
                             </script>
                           <% } %>  
                         <script>
-                           ['start', 'stop', 'restart'].forEach(action => {
-                           document.getElementById(`${action}Button`).addEventListener('click', function () {
-                               if (ws) {
-                                   // Check if the action is 'stop'
-                                   if (action === 'stop') {
-                                       ws.send(JSON.stringify({
-                                           event: 'cmd',
-                                           command: '<%= instance.imageData.StopCommand %>' || 'stop',
-                                           containerId: instanceId // Replace with your actual instanceId variable
-                                       }));
-                                   } else if (action === 'restart') {
-                                       ws.send(JSON.stringify({
-                                           event: `power:restart`,
-                                           containerId: instanceId // Replace with your actual instanceId variable
-                                       }));
-                                   } {
-                                       ws.send(JSON.stringify({
-                                           event: `power:${action}`,
-                                           containerId: instanceId
-                                       }));
-                                   }
-                       
-                                   showAlert('success', 'Action Executed', `Server is ${action}ing. Please wait for a while or refresh the page.`);
-                                   ws.close();
-                               }
-                       
-                               const friendlyMessages = {
-                                   "Checking server disk space usage, this could take a few seconds...": 
-                                       "\u001b[1m\u001b[33m > [PowerPort]\x1b[0m Performing container disk usage checks...",
-                                   "Updating process configuration files...": 
-                                       "\u001b[1m\u001b[33m > [PowerPort]\x1b[0m Updating environment...",
-                                   "Ensuring file permissions are set correctly, this could take a few seconds...": 
-                                       "\u001b[1m\u001b[33m > [PowerPort]\x1b[0m Performing file permission checks...",
-                                   "Pulling Docker container image, this could take a few minutes to complete...": 
-                                       "\u001b[1m\u001b[33m > [PowerPort]\x1b[0m Fetching Docker image...",
-                                   "Finished pulling Docker container image": 
-                                       "\u001b[1m\u001b[33m > [PowerPort]\x1b[0m Completed Docker image pull!"
-                               };
+                              let wasCleared = false;
 
-                                if (action === 'start') {
-                                    term.clear();
-                                    logToTerminal(friendlyMessages);
-                                }
-                            });
-                        });
+const friendlyMessages = {
+    "Checking server disk space usage, this could take a few seconds...":
+        "\u001b[1m\u001b[33m > [PowerPort]\x1b[0m Performing container disk usage checks...",
+    "Updating process configuration files...":
+        "\u001b[1m\u001b[33m > [PowerPort]\x1b[0m Updating environment...",
+    "Ensuring file permissions are set correctly, this could take a few seconds...":
+        "\u001b[1m\u001b[33m > [PowerPort]\x1b[0m Performing file permission checks...",
+    "Pulling Docker container image, this could take a few minutes to complete...":
+        "\u001b[1m\u001b[33m > [PowerPort]\x1b[0m Fetching Docker image...",
+    "Finished pulling Docker container image":
+        "\u001b[1m\u001b[33m > [PowerPort]\x1b[0m Completed Docker image pull!"
+};
 
-        
-                        
+['start', 'stop', 'restart'].forEach(action => {
+    document.getElementById(`${action}Button`).addEventListener('click', function () {
+        if (ws) {
+            if (action === 'stop') {
+                ws.send(JSON.stringify({
+                    event: 'cmd',
+                    command: '<%= instance.imageData.StopCommand %>' || 'stop',
+                    containerId: instanceId
+                }));
+            } else {
+                ws.send(JSON.stringify({
+                    event: `power:${action}`,
+                    containerId: instanceId
+                }));
+            }
+
+            showAlert('success', 'Action Executed', `Server is ${action}ing. Please wait for a while or refresh the page.`);
+
+            if (action === 'start') {
+                wasCleared = true;
+                term.clear();
+                logToTerminal(friendlyMessages);
+            }
+
+            ws.close();
+        }
+    });
+});
+                            
                             // Log the friendly messages to the terminal
                             function logToTerminal(messages) {
                                 for (let message in messages) {
@@ -514,28 +517,7 @@ const eulaPopupHTML = `
                 behavior: 'smooth'
             });
         }
-        const baseTheme = {
-            foreground: '#c5c9d1',
-            background: 'rgba(0 0 0 / 0)',
-            selection: '#5DA5D533',
-            black: '#1E1E1D',
-            brightBlack: '#262625',
-            red: '#E54B4B',
-            green: '#9ECE58',
-            yellow: '#FAED70',
-            blue: '#396FE2',
-            magenta: '#BB80B3',
-            cyan: '#2DDAFD',
-            white: '#d0d0d0',
-            brightBlack: 'rgba(255, 255, 255, 0.2)',
-            brightRed: '#FF5370',
-            brightGreen: '#C3E88D',
-            brightYellow: '#FFCB6B',
-            brightBlue: '#82AAFF',
-            brightMagenta: '#C792EA',
-            brightCyan: '#89DDFF',
-            brightWhite: '#ffffff',
-        };
+
         
         const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
         const instanceId = '<%= req.params.id %>';
@@ -609,37 +591,54 @@ const eulaPopupHTML = `
             });
         }
            
-        function setupTerminal() {
-           term = new Terminal({
-               disableStdin: true,
-               allowProposedApi: true,
-               cursorStyle: 'underline',
-               rows: 20,
-               cols: 100,
-               fontFamily: 'Menlo, monospace',
-               theme: baseTheme,
-               allowTransparency: true,
-               fontSize: 12,
-               lineHeight: 1.0, // Standard line height
-           });
+const theme = {
+    background: 'transparent',
+    cursor: 'transparent',
+    black: '#000000',
+    red: '#E54B4B',
+    green: '#9ECE58',
+    yellow: '#FAED70',
+    blue: '#396FE2',
+    magenta: '#BB80B3',
+    cyan: '#2DDAFD',
+    white: '#d0d0d0',
+    brightBlack: 'rgba(255, 255, 255, 0.2)',
+    brightRed: '#FF5370',
+    brightGreen: '#C3E88D',
+    brightYellow: '#FFCB6B',
+    brightBlue: '#82AAFF',
+    brightMagenta: '#C792EA',
+    brightCyan: '#89DDFF',
+    brightWhite: '#ffffff',
+    selection: 'rgba(255, 255, 255, 0.2)' // soft white selection
+};
+
+function setupTerminal() {
+    term = new Terminal({
+        disableStdin: true,
+        allowProposedApi: true,
+        cursorStyle: 'underline',
+        rows: 20,
+        cols: 100,
+        fontFamily: 'Menlo, monospace',
+        theme: theme,
+        allowTransparency: true,
+        fontSize: 12,
+        lineHeight: 1.0
+    });
 
     const terminalContainer = document.getElementById('terminal');
     term.open(terminalContainer);
 
     const originalWrite = term.write.bind(term);
     term.write = (data) => {
-        // Split the data into lines
         const lines = data.split(/\r?\n/);
+        const isAdmin = "<%= req.user.admin %>";
 
-        // Check if the user is an admin by accessing the user status (this can be done in various ways depending on your setup)
-        const isAdmin = "<%= req.user.admin %>"; // Assuming this is set server-side in your template
-
-        // If the user is an admin, include "Unpacking" lines, else filter them out
         const filteredData = lines
-            .filter(line => isAdmin || !line.includes("Unpacking")) // Show Unpacking only for admins
-            .join('\r\n'); // Rejoin the remaining lines
+            .filter(line => isAdmin || !line.includes("Unpacking"))
+            .join('\r\n');
 
-        // Write the filtered data to the terminal
         originalWrite(filteredData);
     };
 }
