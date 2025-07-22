@@ -1,6 +1,17 @@
 <%- include('../../components/admin_template') %>
 
 <main id="content">
+  <div class="bg-transparent">
+    <div class="sm:flex sm:items-center px-8 pt-4">
+      <div class="sm:flex-auto">
+        <h1 class="text-base font-medium leading-6 text-white"><%= req.translations.settings %></h1>
+        <p class="mt-1 tracking-tight text-sm text-neutral-500"><%= req.translations.changeSettings %></p>
+      </div>
+    </div>
+  </div>
+
+  <%- include('../../components/settings') %>
+
    <div class="px-4 sm:px-6 lg:px-8">
       <dl class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-2">
          <div class="ard rounded-xl p-6 bg-white/5 shadow-2xl overflow-hidden transition-transform transform hover:scale-105 duration-300">
@@ -53,6 +64,18 @@
 </main>
 
 <script>
+   document.addEventListener("DOMContentLoaded", function() {
+     var currentPagePath = window.location.pathname;
+     var navLinks2 = document.querySelectorAll('.nav-link2');
+     navLinks2.forEach(function(link) {
+       var linkPath = new URL(link.getAttribute('href'), window.location.origin).pathname;
+       if (currentPagePath === linkPath) {
+         link.className = 'nav-link';
+         link.classList.add('text-white', 'font-medium', 'border', 'border-transparent', 'bg-white/10', 'font-medium', 'py-2', 'px-3', 'rounded-full', 'shadow-sm');
+       }
+     });
+   });
+
    document.getElementById('useImage').addEventListener('change', function() {
      const imageUploadBox = document.getElementById('imageUploadBox');
      const logoButton = document.getElementById('logoButton');
@@ -69,4 +92,5 @@
      }
    });
 </script>
+
 <%- include('../../components/footer') %>

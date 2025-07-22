@@ -1,53 +1,48 @@
 <!DOCTYPE html>
-<html class="h-full">
+<html lang="en" class="h-full">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= name %> - Login</title>
-  <link href="../assets/tailwind.css" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@500,300,600,400,700&display=swap" rel="stylesheet">
+  <%- include('../components/head') %>
 </head>
-<body style="font-family: 'General Sans'" class="bg-[#141414] h-full">
-    <div class="min-h-full flex">
-        <div class="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
-          <div class="mx-auto w-full max-w-sm lg:w-96">
-            <div>
-              <% if (logo == true) { %><img class="h-12 w-auto" src="../assets/logo.png"> <% } %>
-              <h2 class="<% if (logo == true) { %>mt-6<% } %> text-3xl font-medium text-white">2-Factor Authentication</h2>
-              <p class="mt-2 text-sm text-neutral-500">
-                Please enter the 6 character code displayed on your authenticator app.
-              </p>
-            </div>
-      
-            <div class="mt-8">
-              <div class="mt-6">
+<body class="h-screen w-screen flex items-center justify-center font-space text-white relative">
+  <!-- Background layers -->
+  <div class="fixed inset-0 bg-cover bg-center bg-no-repeat z-[-2]" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80')"></div>
+  <div class="fixed inset-0 bg-black/70 z-[-1]"></div>
+  <div class="fixed bottom-0 left-0 w-full h-1/2 z-[-1]" style="background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.7) 80%, rgba(0,0,0,0.9) 100%);"></div>
 
-                <form action="/2fa" class="space-y-6" method="POST">
-                  <div>
-                    <label for="email" class="block text-sm font-medium text-neutral-400"> Code </label>
-                    <div class="mt-1">
-                      <input placeholder="000000" type="text" id="token" name="token" required required class="appearance-none block w-full px-3 py-2 bg-white/5 border border-white/10 rounded-xl shadow-sm placeholder-neutral-500 focus:outline-none focus:ring-neutral-500 focus:border-neutral-500 text-white transition sm:text-sm">
-                    </div>
-                  </div>
-      
-                  <div>
-                    <button type="submit" class="w-full cursor-pointer flex transition justify-center py-2 px-4 border border-transparent rounded-xl shadow-sm text-sm font-medium text-neutral-800 bg-white hover:bg-neutral-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-500">Submit</button>
-                  </div>
-      
-                  <% if (req.query.err && req.query.err == "InvalidAuthCode") { %>
-                    <div class="mt-2"></div>
-                    <span class="text-amber-600 pt-4 font-normal text-sm">Invalid auth code.</span>
-                  <% } %>
-                </form>
-              </div>
-            </div>
+  <!-- Card -->
+  <div class="bg-black/40 backdrop-blur-md border border-white/10 rounded-xl p-10 w-full max-w-md shadow-xl transition-all duration-300">
+    <div class="flex justify-center mb-8">
+        <h1 class="text-4xl font-extrabold text-white font-space"><%= name %></h1>
+    </div>
+
+    <h2 class="text-center text-3xl font-bold mb-2 text-white font-space tracking-tight">2-Factor Authentication</h2>
+    <p class="text-center text-sm text-gray-300 mb-8 font-space">
+      Please enter the 6-digit code from your authenticator app.
+    </p>
+
+    <form action="/2fa" method="POST" class="space-y-6">
+      <div class="space-y-2">
+        <label for="token" class="text-sm font-medium text-gray-300 ml-1 font-space">Code</label>
+        <div class="relative">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white/50" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M2 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm2 0l6 5 6-5H4z" clip-rule="evenodd" />
+            </svg>
           </div>
+          <input placeholder="000000" type="text" id="token" name="token" required
+            class="w-full p-3 pl-10 bg-black/30 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all duration-200 font-space" />
         </div>
-        <div class="hidden lg:block relative w-0 flex-1">
-          <img class="absolute inset-0 h-full w-full object-cover" src="https://i.imgur.com/IYpZHWi.jpeg" alt="">
-        </div>  
       </div>
+
+      <% if (req.query.err && req.query.err == "InvalidAuthCode") { %>
+        <span class="text-amber-400 pt-2 block text-sm font-space">Invalid auth code.</span>
+      <% } %>
+
+      <button type="submit"
+        class="w-full py-3 rounded-lg bg-white text-black font-semibold transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.4)] hover:-translate-y-0.5 font-space">
+        Submit
+      </button>
+    </form>
+  </div>
 </body>
 </html>

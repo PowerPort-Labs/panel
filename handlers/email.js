@@ -2,42 +2,41 @@ const nodemailer = require('nodemailer');
 const { db } = require('./db.js');
 const config = require('../config.json');
 
-
 async function getSMTPSettings() {
   const smtpSettings = await db.get('smtp_settings');
   const name = await db.get('name') || 'PowerPort';
-  let secure = true
+  let secure = true;
+  let transporter;
+
   if (!smtpSettings) {
     throw new Error('SMTP settings not found');
   }
+
   if (smtpSettings.port == 587 || smtpSettings.port == 25) {
-    secure = false
-    const transporter = nodemailer.createTransport({
-    host: smtpSettings.server,
-    port: smtpSettings.port,
-    secure: secure,
-    auth: {
-      user: smtpSettings.username,
-      pass: smtpSettings.password,
-    },
-    tls: {
-        rejectUnauthorized: true 
-    },
-  });
-  } else {
-const transporter = nodemailer.createTransport({
-    host: smtpSettings.server,
-    port: smtpSettings.port,
-    secure: secure,
-    auth: {
-      user: smtpSettings.username,
-      pass: smtpSettings.password,
-    },
-  });
+    secure = false;
   }
-  
+
+  // Base configuration
+  let transporterConfig = {
+    host: smtpSettings.server,
+    port: smtpSettings.port,
+    secure: secure,
+    tls: smtpSettings.port == 587 || smtpSettings.port == 25 ? { rejectUnauthorized: true } : undefined
+  };
+
+  // Add auth only if username and password are not "0" or empty
+  if (smtpSettings.username && smtpSettings.password && smtpSettings.username !== "0" && smtpSettings.password !== "0") {
+    transporterConfig.auth = {
+      user: smtpSettings.username,
+      pass: smtpSettings.password
+    };
+  }
+
+  transporter = nodemailer.createTransport(transporterConfig);
+
   return { transporter, smtpSettings, name };
 }
+
 
 async function sendWelcomeEmail(email, username, password) {
   try {

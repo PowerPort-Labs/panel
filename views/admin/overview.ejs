@@ -1,33 +1,23 @@
 <%- include('../components/admin_template') %>
-<main id="content" class=min-h-screen text-gray-300">
+
+<main id="content" class="min-h-screen text-gray-300 relative">
   <div class="flex flex-col items-center py-8 px-4">
     <div class="flex items-center justify-center mb-6">
-      <h2 class="text-3xl font-semibold text-white"><%= req.translations.overviewText %></h2>
-  </div>
-    <section class="w-full max-w-7xl mb-10">
-      <div class="bg-[#1c1c1c] p-12 rounded-lg border-4 border-[#1f1c1c] shadow-lg">
-        <div class="flex items-center justify-start space-x-8">
-          <!-- Image Section -->
-<img src="../assets/powerportlogo.png" alt="App Image" class="w-full h-[180px] object-cover rounded-lg">
-          
-          <!-- Text and Description Section -->
-           
-          <div>
-            <script>
+      <h2 class="text-3xl font-semibold text-white"><%= name %> Overview</h2>
+    </div>
+ <script>
               fetch('https://raw.githubusercontent.com/PowerPort-Labs/panel/refs/heads/main/config.json')
                 .then(response => response.json())
                 .then(data => {
                   const currentVersion = '<%= version %>';
                   const latestVersion = data.version;
                   const versionSpan = document.getElementById('currentVersion');
-                  const releaseSpan = document.getElementById('releaseInfo');
                   const versionStatusSpan = document.getElementById('versionStatus');
-          
                   versionSpan.textContent = currentVersion;
-          
+
                   if (latestVersion.includes('beta')) {
                     versionStatusSpan.textContent = 'You Running Beta Version. This Might Have bugs'
-                  };
+                  }
                   if (currentVersion === latestVersion) {
                     versionStatusSpan.textContent = '<%= req.translations.runningLatestVersion %>';
                   } else {
@@ -35,7 +25,7 @@
                     link.href = 'https://github.com/PowerPort-labs/panel/releases/tag/' + latestVersion;
                     link.classList.add('text-amber-500', 'transition', 'hover:text-amber-600', 'font-medium');
                     link.textContent = 'is available Download it from <%= req.translations.here %>';
-          
+
                     const linkText = document.createTextNode(`<%= req.translations.newReleaseSkyport1 %> ${latestVersion} <%= req.translations.newReleaseSkyport2 %> `);
                     versionStatusSpan.appendChild(linkText);
                     versionStatusSpan.appendChild(link);
@@ -43,52 +33,81 @@
                     versionStatusSpan.classList.add('text-amber-500', 'pt-2');
                   }
                 })
-                .catch(error => {
-                  console.error('Error fetching latest version:', error);
-                });
+                .catch(error => console.error('Error fetching latest version:', error));
             </script>
+    <!-- System Info -->
+    <section class="w-full mb-10">
+      <div class="backdrop-blur-sm p-12 rounded-lg backdrop-blur-xl shadow-lg">
+        <div class="flex items-center justify-start space-x-8">
+          <img src="../assets/powerportlogo.png" alt="App Image" class="w-full h-[180px] object-cover rounded-lg">
+          <div>
             <p class="text-sm mt-1 font-normal text-neutral-300 mb-2">
               <%= req.translations.sysInfoText %> <span id="currentVersion"></span>. <span id="versionStatus"></span>
             </p>
-                    </div>
-        </div>
-      </div>
-    </section>
-    
-    <section class="w-full max-w-7xl">
-      <div class="flex items-center justify-center mb-6">
-        <h2 class="text-3xl font-semibold text-white">Platform Statistics</h2>
-    </div>
-    
-
-      <!-- Main Stats Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- Total Users -->
-        <div class="bg-[#1c1c1b] p-6 rounded-xl border border-white/20 hover:scale-105 transform transition-all duration-300 shadow-lg">
-          <div>
-            <p class="text-sm font-medium text-white/70">Total Users</p>
-            <p class="text-3xl font-semibold text-white mt-2"><%= usersTotal %></p>
-          </div>
-        </div>
-
-        <!-- Active Servers -->
-        <div class="bg-[#1c1c1b] p-6 rounded-xl border border-white/20 hover:scale-105 transform transition-all duration-300 shadow-lg">
-          <div>
-            <p class="text-sm font-medium text-white/70">Active Servers</p>
-            <p class="text-3xl font-semibold text-white mt-2"><%= instancesTotal %></p>
-          </div>
-        </div>
-
-        <!-- Total Nodes -->
-        <div class="bg-[#1c1c1b] p-6 rounded-xl border border-white/20 hover:scale-105 transform transition-all duration-300 shadow-lg">
-          <div>
-            <p class="text-sm font-medium text-white/70">Total Nodes</p>
-            <p class="text-3xl font-semibold text-white mt-2"><%= nodesTotal %></p>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Open Stats Popup -->
+    <button onclick="openStatsPopup()" class="px-6 py-3 bg-[#181818] text-white rounded-lg shadow-lg transition">
+      Performance Data
+    </button>
   </div>
 </main>
+
+<!-- Stats Popup -->
+<div id="statsPopup" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+  <div class="bg-[#181818] text-white rounded-xl shadow-2xl p-6 w-[700px] max-w-2xl transform scale-95 transition-transform duration-300">
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-2xl font-bold"><%= name %> Performance</h3>
+      <button onclick="closeStatsPopup()" class="text-gray-400 hover:text-gray-200 transition">✖</button>
+    </div>
+    <canvas id="statsChart" class="w-full h-64"></canvas>
+  </div>
+</div>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('statsChart').getContext('2d');
+  let chartInstance = null;
+
+  function renderChart() {
+    if (chartInstance) chartInstance.destroy();
+    chartInstance = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Users', 'Servers', 'Nodes'],
+        datasets: [{
+          label: 'Statistics',
+          data: [<%= usersTotal %>, <%= instancesTotal %>, <%= nodesTotal %>],
+          backgroundColor: ['#4ade80', '#60a5fa', '#f472b6'],
+          borderRadius: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: { y: { beginAtZero: true } }
+      }
+    });
+  }
+
+  function openStatsPopup() {
+    const modal = document.getElementById('statsPopup');
+    modal.classList.remove('opacity-0', 'pointer-events-none');
+    modal.querySelector('div').classList.remove('scale-95');
+    modal.querySelector('div').classList.add('scale-100');
+    renderChart();
+  }
+
+  function closeStatsPopup() {
+    const modal = document.getElementById('statsPopup');
+    modal.classList.add('opacity-0', 'pointer-events-none');
+    modal.querySelector('div').classList.add('scale-95');
+    modal.querySelector('div').classList.remove('scale-100');
+  }
+</script>
 
 <%- include('../components/footer') %>

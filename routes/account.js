@@ -31,16 +31,11 @@ router.get('/account', async (req, res) => {
     req,
     user: req.user,
     users: await db.get('users') || [], 
-    name: await db.get('name') || 'HydrPowerPortaPanel',
+    name: await db.get('name') || 'PowerPort',
     logo: await db.get('logo') || false
   });
 });
 
-router.get('/accounts', async (req, res) => {
-    let users = await db.get('users') || [];
-  
-    res.send(users);
-  });
 
   router.get('/check-username', async (req, res) => {
     const username = req.query.username;
@@ -117,10 +112,11 @@ router.get('/enable-2fa', async (req, res) => {
         }
         const users = await db.get('users');
         const currentUser = users.find(user => user.username === req.user.username);
+        const sname = await db.get('name');
         const secret = speakeasy.generateSecret({
             length: 20,
-            name: `PowerPort (${currentUser.username})`,
-            issuer: 'HydPowerPortraPanel'
+            name: `${sname} (${currentUser.username})`,
+            issuer: 'PowerPort'
         });
 
 
